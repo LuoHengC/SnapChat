@@ -414,6 +414,7 @@
 				E9FCB6561F0BD771006402C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E9FCB6571F0BD771006402C4 /* Build configuration list for PBXNativeTarget "SnapChatTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +423,7 @@
 				E9FCB6591F0BD771006402C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
