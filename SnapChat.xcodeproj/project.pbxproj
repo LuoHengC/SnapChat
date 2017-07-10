@@ -56,6 +56,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E971BB421F13D10F00ECEC8A /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
+				E9FCB6411F0BD770006402C4 /* Assets.xcassets */,
+				E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */,
+				E9FCB6461F0BD770006402C4 /* Info.plist */,
+			);
+			name = "Supporting File";
+			sourceTree = "<group>";
+		};
 		E9FCB62E1F0BD770006402C4 = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +88,9 @@
 		E9FCB6391F0BD770006402C4 /* SnapChat */ = {
 			isa = PBXGroup;
 			children = (
-				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
+				E971BB421F13D10F00ECEC8A /* Supporting File */,
 				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
 				E9FCB63E1F0BD770006402C4 /* Main.storyboard */,
-				E9FCB6411F0BD770006402C4 /* Assets.xcassets */,
-				E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */,
-				E9FCB6461F0BD770006402C4 /* Info.plist */,
 			);
 			path = SnapChat;
 			sourceTree = "<group>";
