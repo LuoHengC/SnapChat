@@ -70,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
-				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
@@ -78,6 +77,7 @@
 		E971BB441F165FAD00ECEC8A /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E971BB511F1671B400ECEC8A /* Main */,
 				E971BB4C1F1660FA00ECEC8A /* Mine */,
 				E971BB4B1F1660F000ECEC8A /* Home */,
 			);
@@ -130,6 +130,10 @@
 		E971BB4B1F1660F000ECEC8A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E971BB501F16718300ECEC8A /* Controller */,
+				E971BB4F1F16714F00ECEC8A /* Presenter */,
+				E971BB4E1F16714A00ECEC8A /* View */,
+				E971BB4D1F16713D00ECEC8A /* Model */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -139,6 +143,74 @@
 			children = (
 			);
 			name = Mine;
+			sourceTree = "<group>";
+		};
+		E971BB4D1F16713D00ECEC8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E971BB4E1F16714A00ECEC8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E971BB4F1F16714F00ECEC8A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		E971BB501F16718300ECEC8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E971BB511F1671B400ECEC8A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E971BB551F16721100ECEC8A /* Controller */,
+				E971BB541F16720B00ECEC8A /* Presenter */,
+				E971BB531F16720700ECEC8A /* View */,
+				E971BB521F16720200ECEC8A /* Model */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		E971BB521F16720200ECEC8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E971BB531F16720700ECEC8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E971BB541F16720B00ECEC8A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		E971BB551F16721100ECEC8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		E9FCB62E1F0BD770006402C4 = {
