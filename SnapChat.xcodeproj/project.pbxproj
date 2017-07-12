@@ -56,15 +56,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E971BB421F13D10F00ECEC8A /* Supporting File */ = {
+		E971BB421F13D10F00ECEC8A /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
-				E9FCB6411F0BD770006402C4 /* Assets.xcassets */,
+				E9FCB63E1F0BD770006402C4 /* Main.storyboard */,
 				E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */,
 				E9FCB6461F0BD770006402C4 /* Info.plist */,
 			);
-			name = "Supporting File";
+			name = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E971BB431F165F6D00ECEC8A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
+				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		E971BB441F165FAD00ECEC8A /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E971BB4C1F1660FA00ECEC8A /* Mine */,
+				E971BB4B1F1660F000ECEC8A /* Home */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		E971BB451F165FBE00ECEC8A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		E971BB461F165FCA00ECEC8A /* UtilClass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UtilClass;
+			sourceTree = "<group>";
+		};
+		E971BB471F165FD700ECEC8A /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = BaseClass;
+			sourceTree = "<group>";
+		};
+		E971BB481F165FFF00ECEC8A /* ThirdLibrary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ThirdLibrary;
+			sourceTree = "<group>";
+		};
+		E971BB491F16602100ECEC8A /* GlobalDefine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GlobalDefine;
+			sourceTree = "<group>";
+		};
+		E971BB4A1F16604900ECEC8A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E9FCB6411F0BD770006402C4 /* Assets.xcassets */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		E971BB4B1F1660F000ECEC8A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		E971BB4C1F1660FA00ECEC8A /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mine;
 			sourceTree = "<group>";
 		};
 		E9FCB62E1F0BD770006402C4 = {
@@ -88,9 +162,15 @@
 		E9FCB6391F0BD770006402C4 /* SnapChat */ = {
 			isa = PBXGroup;
 			children = (
-				E971BB421F13D10F00ECEC8A /* Supporting File */,
-				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
-				E9FCB63E1F0BD770006402C4 /* Main.storyboard */,
+				E971BB431F165F6D00ECEC8A /* AppDelegate */,
+				E971BB441F165FAD00ECEC8A /* Modules */,
+				E971BB451F165FBE00ECEC8A /* Manager */,
+				E971BB461F165FCA00ECEC8A /* UtilClass */,
+				E971BB491F16602100ECEC8A /* GlobalDefine */,
+				E971BB481F165FFF00ECEC8A /* ThirdLibrary */,
+				E971BB471F165FD700ECEC8A /* BaseClass */,
+				E971BB4A1F16604900ECEC8A /* Resource */,
+				E971BB421F13D10F00ECEC8A /* SupportingFiles */,
 			);
 			path = SnapChat;
 			sourceTree = "<group>";
