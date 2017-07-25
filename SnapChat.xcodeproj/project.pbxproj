@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E9FCB63B1F0BD770006402C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */; };
-		E9FCB63D1F0BD770006402C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB63C1F0BD770006402C4 /* ViewController.swift */; };
-		E9FCB6401F0BD770006402C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FCB63E1F0BD770006402C4 /* Main.storyboard */; };
-		E9FCB6421F0BD770006402C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9FCB6411F0BD770006402C4 /* Assets.xcassets */; };
-		E9FCB6451F0BD770006402C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */; };
+		E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E071F2751340053D49D /* AppDelegate.swift */; };
+		E9DE2E171F2751340053D49D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0D1F2751340053D49D /* MainView.swift */; };
+		E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0E1F2751340053D49D /* MainViewController.swift */; };
+		E9DE2E191F2751340053D49D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E101F2751340053D49D /* Assets.xcassets */; };
+		E9DE2E1A1F2751340053D49D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E121F2751340053D49D /* Info.plist */; };
+		E9DE2E1B1F2751340053D49D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */; };
 		E9FCB6501F0BD771006402C4 /* SnapChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,13 +27,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9DE2E071F2751340053D49D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E9DE2E0D1F2751340053D49D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E9DE2E0E1F2751340053D49D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E9DE2E101F2751340053D49D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E9DE2E121F2751340053D49D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* SnapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9FCB63C1F0BD770006402C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E9FCB63F1F0BD770006402C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9FCB6411F0BD770006402C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E9FCB6441F0BD770006402C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E9FCB6461F0BD770006402C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9FCB64B1F0BD771006402C4 /* SnapChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapChatTests.swift; sourceTree = "<group>"; };
 		E9FCB6511F0BD771006402C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,161 +57,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E971BB421F13D10F00ECEC8A /* SupportingFiles */ = {
+		E9DE2E061F2751340053D49D /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				E9FCB63E1F0BD770006402C4 /* Main.storyboard */,
-				E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */,
-				E9FCB6461F0BD770006402C4 /* Info.plist */,
+				E9DE2E071F2751340053D49D /* AppDelegate.swift */,
 			);
-			name = SupportingFiles;
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		E971BB431F165F6D00ECEC8A /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				E9FCB63A1F0BD770006402C4 /* AppDelegate.swift */,
-			);
-			name = AppDelegate;
-			sourceTree = "<group>";
-		};
-		E971BB441F165FAD00ECEC8A /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				E971BB511F1671B400ECEC8A /* Main */,
-				E971BB4C1F1660FA00ECEC8A /* Mine */,
-				E971BB4B1F1660F000ECEC8A /* Home */,
-			);
-			name = Modules;
-			sourceTree = "<group>";
-		};
-		E971BB451F165FBE00ECEC8A /* Manager */ = {
+		E9DE2E081F2751340053D49D /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Manager;
+			path = BaseClass;
 			sourceTree = "<group>";
 		};
-		E971BB461F165FCA00ECEC8A /* UtilClass */ = {
+		E9DE2E091F2751340053D49D /* GlobalDefine */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = UtilClass;
+			path = GlobalDefine;
 			sourceTree = "<group>";
 		};
-		E971BB471F165FD700ECEC8A /* BaseClass */ = {
+		E9DE2E0A1F2751340053D49D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = BaseClass;
+			path = Manager;
 			sourceTree = "<group>";
 		};
-		E971BB481F165FFF00ECEC8A /* ThirdLibrary */ = {
+		E9DE2E0B1F2751340053D49D /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E0C1F2751340053D49D /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E9DE2E0C1F2751340053D49D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E1D1F2751D30053D49D /* View */,
+				E9DE2E1C1F2751C60053D49D /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E9DE2E0F1F2751340053D49D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E101F2751340053D49D /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E9DE2E111F2751340053D49D /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E121F2751340053D49D /* Info.plist */,
+				E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E9DE2E141F2751340053D49D /* ThirdLibrary */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = ThirdLibrary;
+			path = ThirdLibrary;
 			sourceTree = "<group>";
 		};
-		E971BB491F16602100ECEC8A /* GlobalDefine */ = {
+		E9DE2E151F2751340053D49D /* UtilClass */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = GlobalDefine;
+			path = UtilClass;
 			sourceTree = "<group>";
 		};
-		E971BB4A1F16604900ECEC8A /* Resource */ = {
+		E9DE2E1C1F2751C60053D49D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E9FCB6411F0BD770006402C4 /* Assets.xcassets */,
-			);
-			name = Resource;
-			sourceTree = "<group>";
-		};
-		E971BB4B1F1660F000ECEC8A /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				E971BB501F16718300ECEC8A /* Controller */,
-				E971BB4F1F16714F00ECEC8A /* Presenter */,
-				E971BB4E1F16714A00ECEC8A /* View */,
-				E971BB4D1F16713D00ECEC8A /* Model */,
-			);
-			name = Home;
-			sourceTree = "<group>";
-		};
-		E971BB4C1F1660FA00ECEC8A /* Mine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Mine;
-			sourceTree = "<group>";
-		};
-		E971BB4D1F16713D00ECEC8A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		E971BB4E1F16714A00ECEC8A /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		E971BB4F1F16714F00ECEC8A /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Presenter;
-			sourceTree = "<group>";
-		};
-		E971BB501F16718300ECEC8A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				E9DE2E0E1F2751340053D49D /* MainViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		E971BB511F1671B400ECEC8A /* Main */ = {
+		E9DE2E1D1F2751D30053D49D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E971BB551F16721100ECEC8A /* Controller */,
-				E971BB541F16720B00ECEC8A /* Presenter */,
-				E971BB531F16720700ECEC8A /* View */,
-				E971BB521F16720200ECEC8A /* Model */,
-			);
-			name = Main;
-			sourceTree = "<group>";
-		};
-		E971BB521F16720200ECEC8A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		E971BB531F16720700ECEC8A /* View */ = {
-			isa = PBXGroup;
-			children = (
+				E9DE2E0D1F2751340053D49D /* MainView.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		E971BB541F16720B00ECEC8A /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Presenter;
-			sourceTree = "<group>";
-		};
-		E971BB551F16721100ECEC8A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				E9FCB63C1F0BD770006402C4 /* ViewController.swift */,
-			);
-			name = Controller;
 			sourceTree = "<group>";
 		};
 		E9FCB62E1F0BD770006402C4 = {
@@ -234,15 +171,15 @@
 		E9FCB6391F0BD770006402C4 /* SnapChat */ = {
 			isa = PBXGroup;
 			children = (
-				E971BB431F165F6D00ECEC8A /* AppDelegate */,
-				E971BB441F165FAD00ECEC8A /* Modules */,
-				E971BB451F165FBE00ECEC8A /* Manager */,
-				E971BB461F165FCA00ECEC8A /* UtilClass */,
-				E971BB491F16602100ECEC8A /* GlobalDefine */,
-				E971BB481F165FFF00ECEC8A /* ThirdLibrary */,
-				E971BB471F165FD700ECEC8A /* BaseClass */,
-				E971BB4A1F16604900ECEC8A /* Resource */,
-				E971BB421F13D10F00ECEC8A /* SupportingFiles */,
+				E9DE2E061F2751340053D49D /* AppDelegate */,
+				E9DE2E0B1F2751340053D49D /* Modules */,
+				E9DE2E0F1F2751340053D49D /* Resource */,
+				E9DE2E081F2751340053D49D /* BaseClass */,
+				E9DE2E091F2751340053D49D /* GlobalDefine */,
+				E9DE2E0A1F2751340053D49D /* Manager */,
+				E9DE2E111F2751340053D49D /* SupportingFiles */,
+				E9DE2E141F2751340053D49D /* ThirdLibrary */,
+				E9DE2E151F2751340053D49D /* UtilClass */,
 			);
 			path = SnapChat;
 			sourceTree = "<group>";
@@ -341,9 +278,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FCB6451F0BD770006402C4 /* LaunchScreen.storyboard in Resources */,
-				E9FCB6421F0BD770006402C4 /* Assets.xcassets in Resources */,
-				E9FCB6401F0BD770006402C4 /* Main.storyboard in Resources */,
+				E9DE2E1B1F2751340053D49D /* LaunchScreen.storyboard in Resources */,
+				E9DE2E1A1F2751340053D49D /* Info.plist in Resources */,
+				E9DE2E191F2751340053D49D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,8 +298,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9FCB63D1F0BD770006402C4 /* ViewController.swift in Sources */,
-				E9FCB63B1F0BD770006402C4 /* AppDelegate.swift in Sources */,
+				E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */,
+				E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */,
+				E9DE2E171F2751340053D49D /* MainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,25 +321,6 @@
 			targetProxy = E9FCB64C1F0BD771006402C4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E9FCB63E1F0BD770006402C4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9FCB63F1F0BD770006402C4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E9FCB6431F0BD770006402C4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E9FCB6441F0BD770006402C4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E9FCB6521F0BD771006402C4 /* Debug */ = {
@@ -501,8 +420,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = S9ZG863E99;
-				INFOPLIST_FILE = SnapChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.SnapChat;
@@ -515,8 +435,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = S9ZG863E99;
-				INFOPLIST_FILE = SnapChat/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.SnapChat;
