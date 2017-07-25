@@ -10,9 +10,6 @@
 		E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E071F2751340053D49D /* AppDelegate.swift */; };
 		E9DE2E171F2751340053D49D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0D1F2751340053D49D /* MainView.swift */; };
 		E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0E1F2751340053D49D /* MainViewController.swift */; };
-		E9DE2E191F2751340053D49D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E101F2751340053D49D /* Assets.xcassets */; };
-		E9DE2E1A1F2751340053D49D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E121F2751340053D49D /* Info.plist */; };
-		E9DE2E1B1F2751340053D49D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */; };
 		E9FCB6501F0BD771006402C4 /* SnapChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +28,8 @@
 		E9DE2E0D1F2751340053D49D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E9DE2E0E1F2751340053D49D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E9DE2E101F2751340053D49D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E9DE2E121F2751340053D49D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E9DE2E261F2756380053D49D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SnapChat/Info.plist; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* SnapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64B1F0BD771006402C4 /* SnapChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapChatTests.swift; sourceTree = "<group>"; };
@@ -114,7 +111,6 @@
 		E9DE2E111F2751340053D49D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				E9DE2E121F2751340053D49D /* Info.plist */,
 				E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */,
 			);
 			path = SupportingFiles;
@@ -154,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E9FCB6391F0BD770006402C4 /* SnapChat */,
+				E9DE2E261F2756380053D49D /* Info.plist */,
 				E9FCB64E1F0BD771006402C4 /* SnapChatTests */,
 				E9FCB6381F0BD770006402C4 /* Products */,
 			);
@@ -278,9 +275,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9DE2E1B1F2751340053D49D /* LaunchScreen.storyboard in Resources */,
-				E9DE2E1A1F2751340053D49D /* Info.plist in Resources */,
-				E9DE2E191F2751340053D49D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,9 +414,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = S9ZG863E99;
-				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/SupportingFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.SnapChat;
@@ -435,9 +428,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = S9ZG863E99;
-				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/SupportingFiles/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SnapChat/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.SnapChat;
