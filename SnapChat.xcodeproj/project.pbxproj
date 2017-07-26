@@ -10,6 +10,12 @@
 		E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E071F2751340053D49D /* AppDelegate.swift */; };
 		E9DE2E171F2751340053D49D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0D1F2751340053D49D /* MainView.swift */; };
 		E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E0E1F2751340053D49D /* MainViewController.swift */; };
+		E9DE2E2E1F2798930053D49D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E2D1F2798930053D49D /* HomeView.swift */; };
+		E9DE2E301F2798A40053D49D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E2F1F2798A40053D49D /* HomeViewController.swift */; };
+		E9DE2E391F28CF910053D49D /* tabBar_friendTrends.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E351F28CF910053D49D /* tabBar_friendTrends.png */; };
+		E9DE2E3A1F28CF910053D49D /* tabBar_friendTrends_highLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */; };
+		E9DE2E3B1F28CF910053D49D /* tabBar_home.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E371F28CF910053D49D /* tabBar_home.png */; };
+		E9DE2E3C1F28CF910053D49D /* tabBar_home_hightLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */; };
 		E9FCB6501F0BD771006402C4 /* SnapChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +36,12 @@
 		E9DE2E101F2751340053D49D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9DE2E261F2756380053D49D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SnapChat/Info.plist; sourceTree = "<group>"; };
+		E9DE2E2D1F2798930053D49D /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E9DE2E2F1F2798A40053D49D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E9DE2E351F28CF910053D49D /* tabBar_friendTrends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_friendTrends.png; sourceTree = "<group>"; };
+		E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_friendTrends_highLight.png; sourceTree = "<group>"; };
+		E9DE2E371F28CF910053D49D /* tabBar_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_home.png; sourceTree = "<group>"; };
+		E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_home_hightLight.png; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* SnapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64B1F0BD771006402C4 /* SnapChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapChatTests.swift; sourceTree = "<group>"; };
@@ -86,7 +98,9 @@
 		E9DE2E0B1F2751340053D49D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E9DE2E311F279B130053D49D /* Mine */,
 				E9DE2E0C1F2751340053D49D /* Main */,
+				E9DE2E281F2798220053D49D /* Home */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -103,6 +117,7 @@
 		E9DE2E0F1F2751340053D49D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E9DE2E341F28CF910053D49D /* TabBar */,
 				E9DE2E101F2751340053D49D /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -144,6 +159,65 @@
 				E9DE2E0D1F2751340053D49D /* MainView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		E9DE2E281F2798220053D49D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E2C1F2798670053D49D /* View */,
+				E9DE2E2B1F2798610053D49D /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E9DE2E2B1F2798610053D49D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E2F1F2798A40053D49D /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9DE2E2C1F2798670053D49D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E2D1F2798930053D49D /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9DE2E311F279B130053D49D /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E321F279B130053D49D /* Controller */,
+				E9DE2E331F279B130053D49D /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		E9DE2E321F279B130053D49D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9DE2E331F279B130053D49D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E9DE2E341F28CF910053D49D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E351F28CF910053D49D /* tabBar_friendTrends.png */,
+				E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */,
+				E9DE2E371F28CF910053D49D /* tabBar_home.png */,
+				E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E9FCB62E1F0BD770006402C4 = {
@@ -275,6 +349,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DE2E3C1F28CF910053D49D /* tabBar_home_hightLight.png in Resources */,
+				E9DE2E3A1F28CF910053D49D /* tabBar_friendTrends_highLight.png in Resources */,
+				E9DE2E3B1F28CF910053D49D /* tabBar_home.png in Resources */,
+				E9DE2E391F28CF910053D49D /* tabBar_friendTrends.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +370,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9DE2E301F2798A40053D49D /* HomeViewController.swift in Sources */,
 				E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */,
+				E9DE2E2E1F2798930053D49D /* HomeView.swift in Sources */,
 				E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */,
 				E9DE2E171F2751340053D49D /* MainView.swift in Sources */,
 			);
