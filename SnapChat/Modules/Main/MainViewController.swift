@@ -8,26 +8,31 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
-    class func AddMainViewTabBar(childController:UITabBarController , title:String , imageName:String)
+class MainViewController: UITabBarController
+{
+    
+    class func AddMainViewTabBar(childController:[UIViewController] , title:String , imageName:String)->UITabBarController
     {
-        childController.title = title;
         
-        childController.tabBarItem.image = UIImage(named: imageName)
+        let tabBar = UITabBarController()
         
-        childController.tabBarItem.selectedImage = UIImage(named: imageName + "_highLight")
+        for viewController in childController
+        {
+            let navigation = UINavigationController(rootViewController: viewController)
+            
+            let tarBarItem = UITabBarItem(title: title, image:UIImage(named:imageName), selectedImage:UIImage(named: imageName + "_highLight"))
+            
+            navigation.tabBarItem = tarBarItem
+            
+            tabBar.tabBar.tintColor = UIColor.gray
+            
+            tabBar.addChildViewController(navigation)
+            
+        }
         
-        childController.tabBar.tintColor = UIColor.gray
+        return tabBar
         
-        let navigation = UINavigationController(rootViewController: childController)
-        
-        navigation.tabBarItem.title = title
-        
-        
-    
     }
-    
 
 }
 

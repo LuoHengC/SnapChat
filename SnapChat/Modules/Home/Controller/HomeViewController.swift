@@ -9,6 +9,8 @@
 import UIKit
 
 
-class HomeViewController: UITabBarController {
+class HomeViewController: UIViewController {
+    
+    
     
 }

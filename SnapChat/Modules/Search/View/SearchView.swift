@@ -1,14 +1,14 @@
 //
-//  HomeView.swift
+//  SearchView.swift
 //  SnapChat
 //
-//  Created by Vayne on 2017/7/25.
+//  Created by Vayne on 2017/7/26.
 //  Copyright © 2017年 luoheng. All rights reserved.
 //
 
 import UIKit
 
-class HomeView: UIViewController {
+class SearchView: UIViewController {
     
     override func viewDidLoad() {
         

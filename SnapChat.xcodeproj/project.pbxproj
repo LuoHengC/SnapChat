@@ -16,6 +16,8 @@
 		E9DE2E3A1F28CF910053D49D /* tabBar_friendTrends_highLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */; };
 		E9DE2E3B1F28CF910053D49D /* tabBar_home.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E371F28CF910053D49D /* tabBar_home.png */; };
 		E9DE2E3C1F28CF910053D49D /* tabBar_home_hightLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */; };
+		E9DE2E451F28D1150053D49D /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E441F28D1150053D49D /* SearchController.swift */; };
+		E9DE2E471F28D1200053D49D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E461F28D1200053D49D /* SearchView.swift */; };
 		E9FCB6501F0BD771006402C4 /* SnapChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_friendTrends_highLight.png; sourceTree = "<group>"; };
 		E9DE2E371F28CF910053D49D /* tabBar_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_home.png; sourceTree = "<group>"; };
 		E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_home_hightLight.png; sourceTree = "<group>"; };
+		E9DE2E441F28D1150053D49D /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		E9DE2E461F28D1200053D49D /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* SnapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64B1F0BD771006402C4 /* SnapChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* SnapChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapChatTests.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		E9DE2E0B1F2751340053D49D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E9DE2E3D1F28D0C00053D49D /* Search */,
 				E9DE2E311F279B130053D49D /* Mine */,
 				E9DE2E0C1F2751340053D49D /* Main */,
 				E9DE2E281F2798220053D49D /* Home */,
@@ -218,6 +223,31 @@
 				E9DE2E381F28CF910053D49D /* tabBar_home_hightLight.png */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E9DE2E3D1F28D0C00053D49D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E421F28D1040053D49D /* Controller */,
+				E9DE2E431F28D1040053D49D /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		E9DE2E421F28D1040053D49D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E441F28D1150053D49D /* SearchController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9DE2E431F28D1040053D49D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9DE2E461F28D1200053D49D /* SearchView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E9FCB62E1F0BD770006402C4 = {
@@ -371,7 +401,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9DE2E301F2798A40053D49D /* HomeViewController.swift in Sources */,
+				E9DE2E451F28D1150053D49D /* SearchController.swift in Sources */,
 				E9DE2E181F2751340053D49D /* MainViewController.swift in Sources */,
+				E9DE2E471F28D1200053D49D /* SearchView.swift in Sources */,
 				E9DE2E2E1F2798930053D49D /* HomeView.swift in Sources */,
 				E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */,
 				E9DE2E171F2751340053D49D /* MainView.swift in Sources */,
