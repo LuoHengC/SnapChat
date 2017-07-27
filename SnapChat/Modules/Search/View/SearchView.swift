@@ -10,7 +10,21 @@ import UIKit
 
 class SearchView: UIViewController {
     
+    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        self.tabBarItem = UITabBarItem(title: "搜索", image: UIImage(named:"tabBar_friendTrends.png"), selectedImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+        
+        self.view.backgroundColor = UIColor.black
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
+        
         
     }
     
