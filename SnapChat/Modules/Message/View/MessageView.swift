@@ -1,22 +1,22 @@
 //
-//  SearchView.swift
+//  MessageView.swift
 //  SnapChat
 //
-//  Created by Vayne on 2017/7/26.
+//  Created by Vayne on 2017/7/30.
 //  Copyright © 2017年 luoheng. All rights reserved.
 //
 
 import UIKit
 
-class SearchView: UIViewController {
+class MessageView: UIViewController {
     
     init()
     {
         super.init(nibName: nil, bundle: nil)
         
-        let searchViewController = SearchViewController()
+        let messageViewController = MessageViewController()
         
-        let tabBarItem = searchViewController.SetSearchViewTabBarItem(title: "搜索",
+        let tabBarItem = messageViewController.SetMessageViewTabBarItem(title: "消息",
         image: UIImage(named:"tabBar_friendTrends.png"),
         selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
         
@@ -32,7 +32,7 @@ class SearchView: UIViewController {
     
     override func viewDidLoad() {
         
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.orange
         
     }
     

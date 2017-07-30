@@ -10,23 +10,33 @@ import UIKit
 
 class HomeView: UIViewController {
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    init()
+    {
+        super.init(nibName: nil, bundle: nil)
         
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        let homeViewController = HomeViewController()
         
-        self.tabBarItem = UITabBarItem(title: "主页", image: UIImage(named:"tabBar_home.png"), selectedImage: UIImage(named: "tabBar_home_highLight.png"))
+        let tabBarItem = homeViewController.SetHomeViewTabBarItem(title: "主页",
+        image: UIImage(named:"tabBar_home.png"),
+        selectImage: UIImage(named: "tabBar_home_highLight.png"))
         
-        self.view.backgroundColor = UIColor.blue
+        let navigationItem = homeViewController.SetHomeViewNavigationItem(title: "主页")
+        
+        self.navigationItem.title = navigationItem.title
+        
+        self.tabBarItem = tabBarItem
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+   convenience required init?(coder aDecoder: NSCoder) {
+        
+        self.init()
+        
     }
     
     override func viewDidLoad() {
         
-        
+        self.view.backgroundColor = UIColor.blue
         
     }
     
