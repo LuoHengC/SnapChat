@@ -10,13 +10,15 @@ import UIKit
 
 class NavigationItemConfig: UINavigationController {
     
-    class func SetNavigationItem(title:String?) -> UINavigationItem {
+    class func setNavigationItem(title:String?) -> UINavigationItem {
         
         guard let _ = title else {
             return UINavigationItem(title: "错误")
         }
         
-        let navigationItem = UINavigationItem(title: title!)
+        let navigationItem = UINavigationItem()
+        
+        navigationItem.title = title
         
         return navigationItem
         

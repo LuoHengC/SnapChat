@@ -11,17 +11,17 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    func SetHomeViewTabBarItem(title:String? , image:UIImage? , selectImage:UIImage?) -> UITabBarItem {
+    func setHomeViewTabBarItem(title:String?, image:UIImage? , selectImage:UIImage?) -> UITabBarItem {
         
-        let tabBarItem = TabBarConfig.SetTabBarItem(title: title, image: image, selectImage: selectImage)
+        let tabBarItem = TabBarConfig.setTabBarItem(title:title, image: image, selectImage: selectImage)
         
         return tabBarItem
         
     }
     
-    func SetHomeViewNavigationItem(title:String?) -> UINavigationItem {
+    func setHomeViewNavigationItem(title:String?) -> UINavigationItem {
         
-        let navigationItem = NavigationItemConfig.SetNavigationItem(title: title)
+        let navigationItem = NavigationItemConfig.setNavigationItem(title: title)
         
         return navigationItem
         

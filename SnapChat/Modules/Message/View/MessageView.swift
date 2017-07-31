@@ -10,15 +10,18 @@ import UIKit
 
 class MessageView: UIViewController {
     
-    init()
-    {
+    init(){
         super.init(nibName: nil, bundle: nil)
         
         let messageViewController = MessageViewController()
         
-        let tabBarItem = messageViewController.SetMessageViewTabBarItem(title: "消息",
+        let tabBarItem = messageViewController.setMessageViewTabBarItem(title:"消息",
         image: UIImage(named:"tabBar_friendTrends.png"),
         selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+        
+        let navigationItem = messageViewController.setMessageViewNavigationItem(title: "消息")
+        
+        self.navigationItem.title = navigationItem.title
         
         self.tabBarItem = tabBarItem
         

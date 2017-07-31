@@ -11,7 +11,7 @@ import UIKit
 final class MainViewController: UITabBarController
 {
     
-    class func AddMainViewTabBar(childController:[UIViewController] ) -> [UIViewController]
+    class func addMainViewTabBar(childController:[UIViewController] ) -> [UIViewController]
     {
         var tabBarArrary:[UIViewController] = []
         

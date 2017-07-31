@@ -12,9 +12,9 @@ class MainView: UITabBarController
 {
     override func viewDidLoad() {
         
-        let viewControllerArray:[UIViewController] = [HomeView() , SearchView() , MessageView()]
+        let viewControllerArray:[UIViewController] = [HomeView(), SearchView(), MessageView(), DiscoveryView()]
         
-        self.viewControllers = MainViewController.AddMainViewTabBar(childController: viewControllerArray)
+        self.viewControllers = MainViewController.addMainViewTabBar(childController: viewControllerArray)
     }
     
     override func didReceiveMemoryWarning() {

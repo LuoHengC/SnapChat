@@ -10,17 +10,17 @@ import UIKit
 
 class HomeView: UIViewController {
     
-    init()
-    {
+    init(){
+        
         super.init(nibName: nil, bundle: nil)
         
         let homeViewController = HomeViewController()
         
-        let tabBarItem = homeViewController.SetHomeViewTabBarItem(title: "主页",
+        let tabBarItem = homeViewController.setHomeViewTabBarItem(title:"主页",
         image: UIImage(named:"tabBar_home.png"),
         selectImage: UIImage(named: "tabBar_home_highLight.png"))
         
-        let navigationItem = homeViewController.SetHomeViewNavigationItem(title: "主页")
+        let navigationItem = homeViewController.setHomeViewNavigationItem(title: "主页")
         
         self.navigationItem.title = navigationItem.title
         
@@ -29,9 +29,9 @@ class HomeView: UIViewController {
     }
     
    convenience required init?(coder aDecoder: NSCoder) {
-        
+    
         self.init()
-        
+    
     }
     
     override func viewDidLoad() {

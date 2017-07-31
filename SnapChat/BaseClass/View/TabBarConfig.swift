@@ -10,9 +10,9 @@ import UIKit
 
 class TabBarConfig: UITabBarController {
     
-    class func SetTabBarItem(title:String? , image:UIImage? , selectImage:UIImage?) ->UITabBarItem {
+    class func setTabBarItem(title:String?, image:UIImage?, selectImage:UIImage?) ->UITabBarItem {
         
-        guard let _ = title , let _ = image , let _ = selectImage else {
+        guard let _ = title, let _ = image , let _ = selectImage else {
             return UITabBarItem(title: "错误", image: nil, selectedImage: nil)
         }
         
