@@ -104,8 +104,7 @@
 				E9311E921F2F8174001959CB /* View */,
 				E9311E911F2F8174001959CB /* Controller */,
 			);
-			name = Popular;
-			path = Discovery;
+			path = Popular;
 			sourceTree = "<group>";
 		};
 		E9311E911F2F8174001959CB /* Controller */ = {
