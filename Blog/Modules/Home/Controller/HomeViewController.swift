@@ -11,19 +11,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    func setHomeViewTabBarItem(title:String?, image:UIImage? , selectImage:UIImage?) -> UITabBarItem {
+    func setHomeViewTabBarItem(viewController view:UIViewController){
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:title, image: image, selectImage: selectImage)
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",
+            image: UIImage(named:"tabBar_home.png"),
+            selectImage: UIImage(named: "tabBar_home_highLight.png"))
         
-        return tabBarItem
+        view.tabBarItem = tabBarItem
         
     }
     
-    func setHomeViewNavigationItem(title:String?) -> UINavigationItem {
+    func setHomeViewNavigationItem(viewController view:UIViewController?) {
         
-        let navigationItem = NavigationItemConfig.setNavigationItem(title: title)
-        
-        return navigationItem
+        NavigationItemConfig.setNavigationItem(title: "主页" , navigationItem: view?.navigationItem)
         
     }
     

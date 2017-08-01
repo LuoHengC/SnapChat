@@ -16,15 +16,9 @@ class HomeView: UIViewController {
         
         let homeViewController = HomeViewController()
         
-        let tabBarItem = homeViewController.setHomeViewTabBarItem(title:"主页",
-        image: UIImage(named:"tabBar_home.png"),
-        selectImage: UIImage(named: "tabBar_home_highLight.png"))
+        homeViewController.setHomeViewTabBarItem(viewController: self)
         
-        let navigationItem = homeViewController.setHomeViewNavigationItem(title: "主页")
-        
-        self.navigationItem.title = navigationItem.title
-        
-        self.tabBarItem = tabBarItem
+        homeViewController.setHomeViewNavigationItem(viewController: self)
         
     }
     
@@ -36,8 +30,11 @@ class HomeView: UIViewController {
     
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.blue
         
     }
+    
     
 }

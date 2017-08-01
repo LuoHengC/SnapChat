@@ -10,18 +10,19 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    func setSearchViewTabBarItem(title:String?, image:UIImage? , selectImage:UIImage?) -> UITabBarItem {
+    func setSearchViewTabBarItem(viewController view:UIViewController){
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:title, image: image, selectImage: selectImage)
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"搜索",
+            image: UIImage(named:"tabBar_friendTrends.png"),
+            selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+
+        view.tabBarItem = tabBarItem
         
-        return tabBarItem
     }
     
-    func setSearchViewNavigationItem(title:String?) -> UINavigationItem {
+    func setSearchViewNavigationItem(viewController view:UIViewController?) {
         
-        let navigationItem = NavigationItemConfig.setNavigationItem(title: title)
-        
-        return navigationItem
+        NavigationItemConfig.setNavigationItem(title: "搜索" , navigationItem: view?.navigationItem)
         
     }
     

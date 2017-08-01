@@ -10,17 +10,17 @@ import UIKit
 
 class NavigationItemConfig: UINavigationController {
     
-    class func setNavigationItem(title:String?) -> UINavigationItem {
+    class func setNavigationItem(title:String? , navigationItem:UINavigationItem?){
         
-        guard let _ = title else {
-            return UINavigationItem(title: "错误")
+        guard let _ = title, let _ = navigationItem else {
+            return
         }
         
-        let navigationItem = UINavigationItem()
+        navigationItem?.title = title
         
-        navigationItem.title = title
+        let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: nil)
         
-        return navigationItem
+        navigationItem?.leftBarButtonItem = item
         
     }
     

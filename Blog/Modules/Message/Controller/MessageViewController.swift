@@ -10,20 +10,19 @@ import UIKit
 
 class MessageViewController: UIViewController {
     
-    func setMessageViewTabBarItem(title:String?, image:UIImage? , selectImage:UIImage?) -> UITabBarItem {
+    func setMessageViewTabBarItem(viewController view:UIViewController) {
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:title, image: image, selectImage: selectImage)
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"消息",
+            image: UIImage(named:"tabBar_friendTrends.png"),
+            selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
         
-        return tabBarItem
+        view.tabBarItem = tabBarItem
         
     }
     
-    func setMessageViewNavigationItem(title:String?) -> UINavigationItem {
+    func setMessageViewNavigationItem(viewController view:UIViewController?) {
         
-        let navigationItem = NavigationItemConfig.setNavigationItem(title: title)
-        
-        return navigationItem
-        
+        NavigationItemConfig.setNavigationItem(title: "消息" , navigationItem: view?.navigationItem)
     }
     
 }

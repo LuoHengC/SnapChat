@@ -12,7 +12,7 @@ class MainView: UITabBarController
 {
     override func viewDidLoad() {
         
-        let viewControllerArray:[UIViewController] = [HomeView(), SearchView(), MessageView(), DiscoveryView()]
+        let viewControllerArray:[UIViewController] = [HomeView(), SearchView(), MessageView(), PopularView()]
         
         self.viewControllers = MainViewController.addMainViewTabBar(childController: viewControllerArray)
     }

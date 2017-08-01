@@ -1,23 +1,24 @@
 //
-//  SearchView.swift
+//  DicoveryView.swift
 //  Blog
 //
-//  Created by Vayne on 2017/7/26.
+//  Created by Vayne on 2017/7/31.
 //  Copyright © 2017年 luoheng. All rights reserved.
 //
 
 import UIKit
 
-class SearchView: UIViewController {
+class PopularView: UIViewController {
     
     init(){
+        
         super.init(nibName: nil, bundle: nil)
         
-        let searchViewController = SearchViewController()
+        let popularViewController = PopularViewController()
         
-        searchViewController.setSearchViewNavigationItem(viewController: self)
+        popularViewController.setPopularViewTabBarItem(viewController:self)
         
-        searchViewController.setSearchViewTabBarItem(viewController: self)
+        popularViewController.setPopularViewNavigationItem(viewController: self)
         
     }
     
@@ -26,12 +27,12 @@ class SearchView: UIViewController {
         self.init()
         
     }
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.black
+        self.view.backgroundColor = UIColor.green
         
     }
     

@@ -15,15 +15,9 @@ class MessageView: UIViewController {
         
         let messageViewController = MessageViewController()
         
-        let tabBarItem = messageViewController.setMessageViewTabBarItem(title:"消息",
-        image: UIImage(named:"tabBar_friendTrends.png"),
-        selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+        messageViewController.setMessageViewTabBarItem(viewController: self)
         
-        let navigationItem = messageViewController.setMessageViewNavigationItem(title: "消息")
-        
-        self.navigationItem.title = navigationItem.title
-        
-        self.tabBarItem = tabBarItem
+        messageViewController.setMessageViewNavigationItem(viewController: self)
         
     }
     
@@ -34,6 +28,8 @@ class MessageView: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.orange
         
