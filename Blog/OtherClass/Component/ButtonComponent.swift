@@ -10,4 +10,11 @@ import UIKit
 
 class ButtonComponent: UIButton {
     
+    func createButton(for image:UIImage) -> UIButton {
+        
+        let button = UIButton()
+        
+        return button
+    }
+    
 }
