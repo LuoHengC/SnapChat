@@ -147,12 +147,12 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		E9DE2E081F2751340053D49D /* BaseClass */ = {
+		E9DE2E081F2751340053D49D /* OtherClass */ = {
 			isa = PBXGroup;
 			children = (
 				E9DE2E6A1F2E31520053D49D /* View */,
 			);
-			path = BaseClass;
+			path = OtherClass;
 			sourceTree = "<group>";
 		};
 		E9DE2E091F2751340053D49D /* GlobalDefine */ = {
@@ -372,13 +372,13 @@
 			children = (
 				E9DE2E061F2751340053D49D /* AppDelegate */,
 				E9DE2E0B1F2751340053D49D /* Modules */,
-				E9DE2E0F1F2751340053D49D /* Resource */,
-				E9DE2E081F2751340053D49D /* BaseClass */,
-				E9DE2E091F2751340053D49D /* GlobalDefine */,
+				E9DE2E081F2751340053D49D /* OtherClass */,
 				E9DE2E0A1F2751340053D49D /* Manager */,
+				E9DE2E091F2751340053D49D /* GlobalDefine */,
 				E9DE2E111F2751340053D49D /* SupportingFiles */,
 				E9DE2E141F2751340053D49D /* ThirdLibrary */,
 				E9DE2E151F2751340053D49D /* UtilClass */,
+				E9DE2E0F1F2751340053D49D /* Resource */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
