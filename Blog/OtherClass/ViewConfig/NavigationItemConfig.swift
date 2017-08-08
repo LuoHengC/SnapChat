@@ -18,7 +18,9 @@ class NavigationItemConfig: UINavigationController {
         
         navigationItem?.title = title
         
-        let buttonItem = UIBarButtonItem(customView: ButtonComponent.createButtonJumpToMyView(for: nil))
+        let myViewButton = MyViewButton.getInstance()
+        
+        let buttonItem = UIBarButtonItem(customView: myViewButton.createButtonJumpToMyView(for: nil))
         
         navigationItem?.leftBarButtonItem = buttonItem
         
