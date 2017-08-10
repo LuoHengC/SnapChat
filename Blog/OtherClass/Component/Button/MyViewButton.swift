@@ -18,24 +18,35 @@ final class MyViewButton: UIButton {
         
     }
     
-    func createButtonJumpToMyView(for image:UIImage?) -> UIButton {
+    func createButton(for image:UIImage?) -> UIButton {
         
         let button = UIButton(type: UIButtonType.custom)
-//        
-        button.frame = CGRect (x: 0, y: 0, width: 35, height: 35)
+        
+        button.frame = CGRect (origin: ConstSize.buttonOrigin, size: ConstSize.buttonSize)
+        
+        button.backgroundColor = ConstColor.blue
+        
+        button.layer.cornerRadius = button.frame.width/2
+        
+        button.layer.masksToBounds = true
         
         if let img = image
         {
+            
             button.setImage(img, for: UIControlState.normal)
+            
         }else{
+            
             button.setImage(UIImage(named:"myViewButtonDefault"), for: UIControlState.normal)
+            
+            
+            
+            button.imageView?.image?.resizableImage(withCapInsets: UIEdgeInsetsMake(5, 5, 5, 5), resizingMode: UIImageResizingMode.stretch)
+            
         }
         
-//        button.imageView?.layer.cornerRadius = button.frame.width/2
-    
-        button.layer.cornerRadius = button.frame.width/2
-        
         return button
+        
     }
     
 }

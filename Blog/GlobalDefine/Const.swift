@@ -10,15 +10,23 @@ import UIKit
 
 struct ConstColor {
     
-    static let red = UIColor(red: 236, green: 0, blue: 55, alpha: 1)
+    static let red = UIColor(rgb:0xEC0037)
     
-    static let blue = UIColor(red: 0, green: 157, blue: 246, alpha: 1)
+    static let blue = UIColor(rgb:0x009DF6)
     
-    static let gray = UIColor(red: 202, green: 214, blue: 222, alpha: 1)
+    static let gray = UIColor(rgb:0xCAD6DE)
     
-    static let darkGray = UIColor(red: 117, green: 137, blue: 150, alpha: 1)
+    static let darkGray = UIColor(rgb:0x758996)
     
-    static let lightGray = UIColor(red: 159, green: 159, blue: 159, alpha: 1)
+    static let lightGray = UIColor(rgb:0x9F9F9F)
+    
+}
+
+struct ConstSize {
+    
+    static let buttonOrigin = CGPoint(x: 0, y: 0)
+    
+    static let buttonSize = CGSize(width: 35, height: 35)
     
 }
 
