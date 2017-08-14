@@ -23,7 +23,7 @@ class NavigationItemConfig: UINavigationController {
     
     class func setNavigationLeftButton(navigationItem:UINavigationItem?) {
         
-        let button = MyViewButton.getInstance().createButton(for: nil)
+        let button = MyViewButton.getInstance().createButton(with: nil)
         
         let leftButtonView = UIView(frame: button.frame)
         

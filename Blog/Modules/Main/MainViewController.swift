@@ -11,11 +11,11 @@ import UIKit
 final class MainViewController: UITabBarController
 {
     
-    class func addMainViewTabBar(childController:[UIViewController] ) -> [UIViewController]
+    class func addMainViewTabBar(childControllers:[UIViewController] ) -> [UIViewController]
     {
         var tabBarArrary:[UIViewController] = []
         
-        for (viewController) in childController
+        for (viewController) in childControllers
         {
             let navigation = UINavigationController(rootViewController: viewController)
             

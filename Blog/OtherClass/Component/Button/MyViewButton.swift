@@ -18,35 +18,43 @@ final class MyViewButton: UIButton {
         
     }
     
-    func createButton(for image:UIImage?) -> UIButton {
+    func createButton(with image:UIImage?) -> UIButton {
         
         let button = UIButton(type: UIButtonType.custom)
         
         button.frame = CGRect (origin: ConstSize.buttonOrigin, size: ConstSize.buttonSize)
         
-        button.backgroundColor = ConstColor.blue
+        button.backgroundColor = ConstColor.gray
         
         button.layer.cornerRadius = button.frame.width/2
         
         button.layer.masksToBounds = true
+        
+        button.contentMode = .scaleAspectFill
+        
+        button.addTarget(self, action:#selector(MyViewButton.btnOnClick) , for: .touchUpInside)
         
         if let img = image
         {
             
             button.setImage(img, for: UIControlState.normal)
             
+            button.adjustsImageWhenHighlighted = false
+            
         }else{
             
-            button.setImage(UIImage(named:"myViewButtonDefault"), for: UIControlState.normal)
+            let defImage = UIImage(named: "myViewButtonDefault")
             
-            
-            
-            button.imageView?.image?.resizableImage(withCapInsets: UIEdgeInsetsMake(5, 5, 5, 5), resizingMode: UIImageResizingMode.stretch)
+            button.setImage(defImage, for: UIControlState.normal)
             
         }
         
         return button
         
+    }
+    
+    func btnOnClick() {
+        print( "按钮在按")
     }
     
 }
