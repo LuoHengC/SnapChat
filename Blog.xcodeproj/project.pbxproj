@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90EA1CA1F434C41003978CA /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90EA1C91F434C40003978CA /* MyView.swift */; };
+		E90EA1CC1F434C7D003978CA /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90EA1CB1F434C7D003978CA /* MyViewController.swift */; };
 		E960BFF11F3A19BB005790BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E101F2751340053D49D /* Assets.xcassets */; };
 		E960BFF41F3CB4C7005790BF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960BFF31F3CB4C7005790BF /* UIColorExtension.swift */; };
 		E960BFF71F3CBAAC005790BF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960BFF51F3CBAAC005790BF /* HomeView.swift */; };
@@ -23,6 +25,7 @@
 		E96FC6CF1F3210350079381C /* NavigationItemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FC6CB1F320F5A0079381C /* NavigationItemConfig.swift */; };
 		E96FC6D01F3210350079381C /* TabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FC6CC1F320F5A0079381C /* TabBarConfig.swift */; };
 		E96FC6D31F3211D60079381C /* MyViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96FC6D21F3211D60079381C /* MyViewButton.swift */; };
+		E9B9B2A71F45E254006EAAE4 /* SlideOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B9B2A61F45E254006EAAE4 /* SlideOutViewController.swift */; };
 		E9DE2E161F2751340053D49D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DE2E071F2751340053D49D /* AppDelegate.swift */; };
 		E9DE2E391F28CF910053D49D /* tabBar_friendTrends.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E351F28CF910053D49D /* tabBar_friendTrends.png */; };
 		E9DE2E3A1F28CF910053D49D /* tabBar_friendTrends_highLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E361F28CF910053D49D /* tabBar_friendTrends_highLight.png */; };
@@ -50,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90EA1C91F434C40003978CA /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		E90EA1CB1F434C7D003978CA /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		E960BFF31F3CB4C7005790BF /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E960BFF51F3CBAAC005790BF /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E960BFF61F3CBAAC005790BF /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 		E96FC6CB1F320F5A0079381C /* NavigationItemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItemConfig.swift; sourceTree = "<group>"; };
 		E96FC6CC1F320F5A0079381C /* TabBarConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarConfig.swift; sourceTree = "<group>"; };
 		E96FC6D21F3211D60079381C /* MyViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewButton.swift; sourceTree = "<group>"; };
+		E9B9B2A61F45E254006EAAE4 /* SlideOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutViewController.swift; sourceTree = "<group>"; };
 		E9DE2E071F2751340053D49D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9DE2E101F2751340053D49D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9DE2E131F2751340053D49D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,12 +162,12 @@
 			path = OtherClass;
 			sourceTree = "<group>";
 		};
-		E9DE2E091F2751340053D49D /* GlobalDefine */ = {
+		E9DE2E091F2751340053D49D /* ConstDefine */ = {
 			isa = PBXGroup;
 			children = (
 				E9673C711F335C360092BB33 /* Const.swift */,
 			);
-			path = GlobalDefine;
+			path = ConstDefine;
 			sourceTree = "<group>";
 		};
 		E9DE2E0A1F2751340053D49D /* Manager */ = {
@@ -220,6 +226,7 @@
 		E9DE2E151F2751340053D49D /* UtilClass */ = {
 			isa = PBXGroup;
 			children = (
+				E9B9B2A61F45E254006EAAE4 /* SlideOutViewController.swift */,
 			);
 			path = UtilClass;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 		E9DE2E311F279B130053D49D /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				E90EA1C91F434C40003978CA /* MyView.swift */,
+				E90EA1CB1F434C7D003978CA /* MyViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -312,7 +321,7 @@
 				E9DE2E0B1F2751340053D49D /* Modules */,
 				E9DE2E081F2751340053D49D /* OtherClass */,
 				E9DE2E0A1F2751340053D49D /* Manager */,
-				E9DE2E091F2751340053D49D /* GlobalDefine */,
+				E9DE2E091F2751340053D49D /* ConstDefine */,
 				E9DE2E111F2751340053D49D /* SupportingFiles */,
 				E9DE2E141F2751340053D49D /* ThirdLibrary */,
 				E9DE2E151F2751340053D49D /* UtilClass */,
@@ -449,8 +458,11 @@
 				E960C0031F3CBB0C005790BF /* PopularView.swift in Sources */,
 				E96FC6D01F3210350079381C /* TabBarConfig.swift in Sources */,
 				E960BFF71F3CBAAC005790BF /* HomeView.swift in Sources */,
+				E90EA1CC1F434C7D003978CA /* MyViewController.swift in Sources */,
 				E960BFFC1F3CBAC8005790BF /* MainViewController.swift in Sources */,
 				E960BFF41F3CB4C7005790BF /* UIColorExtension.swift in Sources */,
+				E90EA1CA1F434C41003978CA /* MyView.swift in Sources */,
+				E9B9B2A71F45E254006EAAE4 /* SlideOutViewController.swift in Sources */,
 				E960C0041F3CBB0C005790BF /* PopularViewController.swift in Sources */,
 				E960BFF81F3CBAAC005790BF /* HomeViewController.swift in Sources */,
 				E960BFFF1F3CBAE5005790BF /* MessageView.swift in Sources */,

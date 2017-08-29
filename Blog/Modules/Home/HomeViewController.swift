@@ -9,7 +9,7 @@
 import UIKit
 
 
-class HomeViewController: UIViewController {
+class HomeViewController  {
     
     func setHomeViewTabBarItem(viewController view:UIViewController){
         
@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
         
         NavigationItemConfig.setNavigationItem(title: "主页" , navigationItem: view?.navigationItem)
         
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
     }
     
 }

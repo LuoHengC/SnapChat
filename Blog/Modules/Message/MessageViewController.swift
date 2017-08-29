@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class MessageViewController {
     
     func setMessageViewTabBarItem(viewController view:UIViewController) {
         
@@ -23,6 +23,8 @@ class MessageViewController: UIViewController {
     func setMessageViewNavigationItem(viewController view:UIViewController?) {
         
         NavigationItemConfig.setNavigationItem(title: "消息" , navigationItem: view?.navigationItem)
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
     }
     
 }

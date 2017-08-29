@@ -18,7 +18,6 @@ class NavigationItemConfig: UINavigationController {
         
         navigationItem?.title = title
         
-        self.setNavigationLeftButton(navigationItem: navigationItem)
     }
     
     class func setNavigationLeftButton(navigationItem:UINavigationItem?) {

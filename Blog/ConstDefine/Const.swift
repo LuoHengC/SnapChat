@@ -22,11 +22,19 @@ struct ConstColor {
     
 }
 
-struct ConstSize {
+struct ConstButtonSize {
     
     static let buttonOrigin = CGPoint(x: 0, y: 0)
     
     static let buttonSize = CGSize(width: 35, height: 35)
+    
+}
+
+struct ConstScreenSize{
+
+    static let screenWidth = UIScreen.main.bounds.width
+    
+    static let screenHeight = UIScreen.main.bounds.height
     
 }
 

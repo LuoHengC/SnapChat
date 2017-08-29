@@ -22,7 +22,7 @@ final class MyViewButton: UIButton {
         
         let button = UIButton(type: UIButtonType.custom)
         
-        button.frame = CGRect (origin: ConstSize.buttonOrigin, size: ConstSize.buttonSize)
+        button.frame = CGRect (origin: ConstButtonSize.buttonOrigin, size: ConstButtonSize.buttonSize)
         
         button.backgroundColor = ConstColor.gray
         
@@ -56,5 +56,7 @@ final class MyViewButton: UIButton {
     func btnOnClick() {
         print( "按钮在按")
     }
+    
+    
     
 }

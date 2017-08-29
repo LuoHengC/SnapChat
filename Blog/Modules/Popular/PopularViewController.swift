@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopularViewController: UIViewController {
+class PopularViewController {
     
     func setPopularViewTabBarItem(viewController view:UIViewController ) {
         
@@ -22,6 +22,8 @@ class PopularViewController: UIViewController {
     func setPopularViewNavigationItem(viewController view:UIViewController?) {
         
         NavigationItemConfig.setNavigationItem(title: "热门" , navigationItem: view?.navigationItem)
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
         
     }
     
