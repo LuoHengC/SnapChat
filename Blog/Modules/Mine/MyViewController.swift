@@ -10,10 +10,6 @@ import UIKit
 
 class MyViewController {
 
-    private let myViewScale:CGFloat = 0.75
-    
-    func getFrame() -> CGRect {
-        return CGRect(x: -ConstScreenSize.screenWidth * (1 - myViewScale), y: 0, width: ConstScreenSize.screenWidth, height: ConstScreenSize.screenHeight)
-    }
+  
 
 }

@@ -46,6 +46,17 @@ struct MyViewPanState {
 
 
 class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
+    
+    enum SlideAction {
+        case open
+        case close
+    }
+    
+    struct PanInfo {
+        var action: SlideAction
+        var shouldBounce: Bool
+        var velocity: CGFloat
+    }
 
     var myViewController:UIViewController?
     var mainViewController:UIViewController?
@@ -123,6 +134,125 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        
+        myContainerView.isHidden = true
+        
+        coordinator.animate(alongsideTransition: nil , completion: { (context:UIViewControllerTransitionCoordinatorContext!)->Void in
+            
+            self.closeLeftNonAnimation()
+            
+            self.myContainerView.isHidden = false
+            
+            if self.myViewPanGesture != nil && self.myViewTapGesture != nil {
+            
+                self.removeLeftGestures()
+                
+                self.addMyViewGestures()
+            
+            }
+            
+        })
+        
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        edgesForExtendedLayout = UIRectEdge()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+    }
+    
+    override var supportedInterfaceOrientations:UIInterfaceOrientationMask{
+    
+        if let mainController = self.mainViewController{
+        
+            return mainController.supportedInterfaceOrientations
+            
+        }
+        
+        return UIInterfaceOrientationMask.all
+    
+    }
+    
+    override var shouldAutorotate : Bool {
+        return mainViewController?.shouldAutorotate ?? false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        
+        return self.mainViewController?.preferredStatusBarStyle ?? .default
+        
+    }
+
+    
+    override func viewWillLayoutSubviews() {
+        
+        setUpViewController(mainContainerView, targetViewController: mainViewController)
+        
+        setUpViewController(myContainerView, targetViewController: myViewController)
+        
+    }
+    
+    fileprivate func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
+        if let viewController = targetViewController {
+            viewController.view.frame = targetView.bounds
+            
+            if (!childViewControllers.contains(viewController)) {
+                addChildViewController(viewController)
+                targetView.addSubview(viewController.view)
+                viewController.didMove(toParentViewController: self)
+            }
+        }
+    }
+    
+    func removeLeftGestures(){
+    
+        if myViewPanGesture != nil {
+            view.removeGestureRecognizer(myViewPanGesture!)
+            myViewPanGesture = nil
+        }
+        
+        if myViewTapGesture != nil {
+            view.removeGestureRecognizer(myViewTapGesture!)
+            myViewTapGesture = nil
+        }
+    
+    }
+    
+    func closeLeftNonAnimation(){
+    
+        setClosedWindowLevel()
+        
+        let finalXOrigin: CGFloat = -SlideOutOption.myViewWidth
+        
+        var frame: CGRect = myContainerView.frame
+        
+        frame.origin.x = finalXOrigin
+        
+        myContainerView.frame = frame
+        
+        opacityView.layer.opacity = 0.0
+        
+        mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        
+        removeShadow(myContainerView)
+        
+        enableContentInteraction()
+    
+    }
+    
     func addMyViewGestures(){
         
         if myViewController != nil {
@@ -165,17 +295,6 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
         }
         
-    }
-    
-    enum SlideAction {
-        case open
-        case close
-    }
-    
-    struct PanInfo {
-        var action: SlideAction
-        var shouldBounce: Bool
-        var velocity: CGFloat
     }
     
     func handleMyViewPanGestures(_ panGestures:UIPanGestureRecognizer){
@@ -263,7 +382,42 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     func toggleMyView(){
         
+        if isMyViewOpen() {
+            
+            closeMyView()
+            
+            setClosedWindowLevel()
+            
+        }else{
         
+            openMyView()
+            
+        }
+    }
+    
+    func closeMyView(){
+        
+        guard let _ = myViewController else {
+            return
+        }
+        
+        myViewController?.beginAppearanceTransition(isMyViewHidden(), animated: true)
+        
+        closeLeftWithVelocity(0.0)
+        
+        setClosedWindowLevel()
+        
+    }
+    
+    func openMyView() {
+        
+        guard let _ = myViewController else {
+            return
+        }
+        
+        myViewController?.beginAppearanceTransition(isMyViewHidden(), animated: true)
+        
+        openLeftWithVelocity(0.0)
         
     }
     
