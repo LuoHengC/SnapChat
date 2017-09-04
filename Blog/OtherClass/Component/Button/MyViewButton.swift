@@ -12,7 +12,7 @@ final class MyViewButton: UIButton {
     
     private static let singleInstance = MyViewButton()
     
-    static func getInstance() -> MyViewButton {
+    class func getInstance() -> MyViewButton {
         
         return singleInstance
         
@@ -54,7 +54,9 @@ final class MyViewButton: UIButton {
     }
     
     func btnOnClick() {
-        print( "按钮在按")
+       
+        SlideOutViewController.getInstance().toggleMyView()
+        
     }
     
     

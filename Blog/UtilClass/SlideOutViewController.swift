@@ -11,7 +11,7 @@ import UIKit
 struct SlideOutOption {
     
     static let myViewWidth: CGFloat = 270.0
-    static let opacityViewBackgroundColor: UIColor = UIColor.black
+    static let opacityViewBackgroundColor: UIColor = .gray
     
     static var panGesturesEnabled: Bool = true
     static var tapGesturesEnabled: Bool = true
@@ -36,16 +36,22 @@ struct MyViewPanState {
     
     static var frameAtStart :CGRect = .zero
     static var startPoint :CGPoint = .zero
-    static var frameAtStartOfPan:CGRect = CGRect.zero
     
     static var isOpenAtSatrt :Bool = false
     static var isHiddenAtStart :Bool = false
-    static var wasHiddenAtStartOfPan: Bool = false
     
 }
 
 
 class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
+    
+    private static let singleInstance = SlideOutViewController(mainViewController: MainView(), myViewController: MyView())
+    
+    class func getInstance() -> SlideOutViewController{
+    
+        return singleInstance
+    
+    }
     
     enum SlideAction {
         case open
@@ -106,7 +112,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         opacityView.backgroundColor = SlideOutOption.opacityViewBackgroundColor
         
-        opacityView.autoresizingMask = [UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleWidth]
+        opacityView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         opacityView.layer.opacity = 0.0
         
@@ -134,32 +140,6 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        
-        myContainerView.isHidden = true
-        
-        coordinator.animate(alongsideTransition: nil , completion: { (context:UIViewControllerTransitionCoordinatorContext!)->Void in
-            
-            self.closeLeftNonAnimation()
-            
-            self.myContainerView.isHidden = false
-            
-            if self.myViewPanGesture != nil && self.myViewTapGesture != nil {
-            
-                self.removeLeftGestures()
-                
-                self.addMyViewGestures()
-            
-            }
-            
-        })
-        
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -174,6 +154,16 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    //通过重写这个方法，在视图布局子视图之前来做一些改变
+    override func viewWillLayoutSubviews() {
+        
+        setUpViewController(mainContainerView, targetViewController: mainViewController)
+        
+        setUpViewController(myContainerView, targetViewController: myViewController)
+        
+    }
+    
+    //返回view controller当前的视图取向
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask{
     
         if let mainController = self.mainViewController{
@@ -186,33 +176,36 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     }
     
+    //只有这个值为true的时候，上面的方法才会奏效
     override var shouldAutorotate : Bool {
+        
         return mainViewController?.shouldAutorotate ?? false
+        
     }
     
+    //返回当前优先状态栏
     override var preferredStatusBarStyle: UIStatusBarStyle {
+        
         
         return self.mainViewController?.preferredStatusBarStyle ?? .default
         
-    }
-
-    
-    override func viewWillLayoutSubviews() {
-        
-        setUpViewController(mainContainerView, targetViewController: mainViewController)
-        
-        setUpViewController(myContainerView, targetViewController: myViewController)
         
     }
     
     fileprivate func setUpViewController(_ targetView: UIView, targetViewController: UIViewController?) {
+        
         if let viewController = targetViewController {
+            
             viewController.view.frame = targetView.bounds
             
             if (!childViewControllers.contains(viewController)) {
+                
                 addChildViewController(viewController)
+                
                 targetView.addSubview(viewController.view)
+                
                 viewController.didMove(toParentViewController: self)
+                
             }
         }
     }
@@ -220,36 +213,20 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     func removeLeftGestures(){
     
         if myViewPanGesture != nil {
+            
             view.removeGestureRecognizer(myViewPanGesture!)
+            
             myViewPanGesture = nil
+            
         }
         
         if myViewTapGesture != nil {
+            
             view.removeGestureRecognizer(myViewTapGesture!)
+            
             myViewTapGesture = nil
+            
         }
-    
-    }
-    
-    func closeLeftNonAnimation(){
-    
-        setClosedWindowLevel()
-        
-        let finalXOrigin: CGFloat = -SlideOutOption.myViewWidth
-        
-        var frame: CGRect = myContainerView.frame
-        
-        frame.origin.x = finalXOrigin
-        
-        myContainerView.frame = frame
-        
-        opacityView.layer.opacity = 0.0
-        
-        mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        
-        removeShadow(myContainerView)
-        
-        enableContentInteraction()
     
     }
     
@@ -283,7 +260,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                         
                         if let tapGesture = myViewTapGesture{
                         
-                            view.addGestureRecognizer(tapGesture)
+                            opacityView.addGestureRecognizer(tapGesture)
                             
                         }
                         
@@ -330,7 +307,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             let translation:CGPoint = panGestures.translation(in: panGestures.view)
             
-            myContainerView.frame = applyLeftTranslation(translation, toFrame: MyViewPanState.frameAtStartOfPan)
+            myContainerView.frame = applyLeftTranslation(translation, toFrame: MyViewPanState.frameAtStart)
             
             applyMyViewOpacity()
             
@@ -351,7 +328,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             if panInfo.action == .open {
                 
-                if !MyViewPanState.wasHiddenAtStartOfPan {
+                if !MyViewPanState.isHiddenAtStart {
                     
                     myViewController?.beginAppearanceTransition(true, animated: true)
                     
@@ -361,7 +338,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 
             }else{
             
-                if MyViewPanState.wasHiddenAtStartOfPan{
+                if MyViewPanState.isHiddenAtStart{
                 
                     myViewController?.beginAppearanceTransition(false, animated: true)
                     
