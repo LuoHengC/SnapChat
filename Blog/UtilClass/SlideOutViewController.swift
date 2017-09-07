@@ -67,9 +67,9 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     var myViewController:UIViewController?
     var mainViewController:UIViewController?
     
-    var mainContainerView = UIView()
+    var mainContainerView = UIView()//主视图容器
+    var myContainerView = UIView()//左边视图容器
     var opacityView = UIView()
-    var myContainerView = UIView()
     
     var myViewPanGesture: UIPanGestureRecognizer?
     var myViewTapGesture: UITapGestureRecognizer?
@@ -203,7 +203,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 addChildViewController(viewController)
                 
                 targetView.addSubview(viewController.view)
-                
+    //在一个viewController添加或者移除一个containerView时调用，告诉ios已经完成添加（或删除）子控制器的操作
                 viewController.didMove(toParentViewController: self)
                 
             }
@@ -230,6 +230,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     }
     
+    //添加滑动和触摸手势
     func addMyViewGestures(){
         
         if myViewController != nil {
@@ -259,7 +260,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                         myViewTapGesture?.delegate = self
                         
                         if let tapGesture = myViewTapGesture{
-                        
+                        //将当前的触碰触摸添加到透明视图里面，这样在拉出左边的视图后，只有点击透明视图在收回
                             opacityView.addGestureRecognizer(tapGesture)
                             
                         }
@@ -292,7 +293,14 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             MyViewPanState.isHiddenAtStart = isMyViewHidden()
             
+            //translation:in:方法返回在指定坐标系统中的平移量
+            let translation = panGestures.translation(in: view)
+            //当前手势为从右向左滑并且左侧界面没开
+            if translation.x < 0 && !MyViewPanState.isOpenAtSatrt {
+                return
+            }
             
+            //如果第一个参数为true，触发myViewController的ViewWillAppearance，反之就触发viewWillDisAppear
             myViewController?.beginAppearanceTransition(MyViewPanState.isHiddenAtStart, animated: true)
             
             addShadow(toView: myContainerView)
@@ -412,6 +420,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     func addShadow(toView targetContainerView:UIView) {
         
+        
+        
         targetContainerView.layer.masksToBounds = false
         
         targetContainerView.layer.shadowOffset = SlideOutOption.shadowOffSet
@@ -530,11 +540,17 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         panInfo.action = leftOrigin <= pointOfNoReturn ? .close : .open
         
         if velocity.x >= thresholdVelocity {
+            
             panInfo.action = .open
+            
             panInfo.velocity = velocity.x
+            
         } else if velocity.x <= (-1.0 * thresholdVelocity) {
+            
             panInfo.action = .close
+            
             panInfo.velocity = velocity.x
+            
         }
         
         return panInfo
@@ -556,19 +572,27 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         }
         
         addShadow(toView:myContainerView)
-        
-        UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in
+      //UIView最基本的动画方法之一，带有延迟，options配置动画的参数，可传入数组。
+        UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in  //这边闭包使用了self，可能会造成强引用循环，需要使用闭包捕获列表
+            
             if let strongSelf = self {
+                
                 strongSelf.myContainerView.frame = frame
+                
                 strongSelf.opacityView.layer.opacity = Float(SlideOutOption.contentViewOpacity)
                 
                 SlideOutOption.contentViewDrag == true ? (strongSelf.mainContainerView.transform = CGAffineTransform(translationX: SlideOutOption.myViewWidth, y: 0)) : (strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: SlideOutOption.contentViewScale, y: SlideOutOption.contentViewScale))
-                
+
             }
-        }) { [weak self](Bool) -> Void in
+            
+        }){ [weak self](Bool) -> Void in
+            
             if let strongSelf = self {
+                
                 strongSelf.disableContentInteraction()
+                //触发viewDidAppear和viewDidDisAppear
                 strongSelf.myViewController?.endAppearanceTransition()
+                
             }
         }
         
@@ -577,23 +601,35 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     func closeLeftWithVelocity(_ velocity: CGFloat){
         
         let xOrigin: CGFloat = myContainerView.frame.origin.x
+        
         let finalXOrigin: CGFloat = -SlideOutOption.myViewWidth
         
         var frame: CGRect = myContainerView.frame
+        
         frame.origin.x = finalXOrigin
         
         var duration: TimeInterval = Double(SlideOutOption.animationDuration)
+        
         if velocity != 0.0 {
+            
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
+            
             duration = Double(fmax(0.1, fmin(1.0, duration)))
+            
         }
         
         UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in
+            
             if let strongSelf = self {
+                
                 strongSelf.myContainerView.frame = frame
+                
                 strongSelf.opacityView.layer.opacity = 0.0
+                
                 strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                
             }
+            
         }) { [weak self](Bool) -> Void in
             if let strongSelf = self {
                 strongSelf.removeShadow(strongSelf.myContainerView)
@@ -605,16 +641,23 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     }
     
     fileprivate func disableContentInteraction() {
+        
         mainContainerView.isUserInteractionEnabled = false
+        
     }
     
     fileprivate func removeShadow(_ targetContainerView: UIView) {
+        
         targetContainerView.layer.masksToBounds = true
+        
         mainContainerView.layer.opacity = 1.0
+        
     }
     
     fileprivate func enableContentInteraction() {
+        
         mainContainerView.isUserInteractionEnabled = true
+        
     }
     
 }
