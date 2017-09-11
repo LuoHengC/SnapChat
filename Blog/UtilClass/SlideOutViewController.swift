@@ -13,18 +13,18 @@ struct SlideOutOption {
     static let myViewWidth: CGFloat = 270.0
     static let opacityViewBackgroundColor: UIColor = .gray
     
-    static var panGesturesEnabled: Bool = true
-    static var tapGesturesEnabled: Bool = true
-    static var hideStatusBar: Bool = true
-    static var contentViewDrag:Bool = false
+    static let panGesturesEnabled: Bool = true
+    static let tapGesturesEnabled: Bool = true
+    static let hideStatusBar: Bool = false
+    static var contentViewDrag:Bool = true
     
-    static var shadowOffSet: CGSize = CGSize(width: 0, height: 0)
-    static var shadowOpacity: Float = 0.0
-    static var shadowRadius: CGFloat = 0.0
-    static var contentViewOpacity:CGFloat = 0.5
-    static var contentViewScale:CGFloat = 0.96
-    static var pointOfNoReturnWidth: CGFloat = 44.0
-    static var animationDuration: CGFloat = 0.4
+    static let shadowOffSet: CGSize = CGSize(width: 0, height: 0)
+    static let shadowOpacity: Float = 0.0
+    static let shadowRadius: CGFloat = 0.0
+    static let contentViewOpacity:CGFloat = 0.5
+    static let contentViewScale:CGFloat = 0.96
+    static let pointOfNoReturnWidth: CGFloat = 44.0
+    static let animationDuration: CGFloat = 0.4
     static var animationOptions: UIViewAnimationOptions = []
     
     
@@ -308,6 +308,11 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             setOpenWindowLevel()
             
         case .changed:
+            
+            /**
+             在个方法里面的思路是，首先根据手势的移动距离，即通过translation方法来控制myContaninerView的frame来调整左侧视图的位置。在然后通过myContaninerView的frame的x值来设置主视图的位置
+             */
+            
             //判断当前手势是否改变，如果是其他状态就return
             if MyViewPanState.lastState != .began && MyViewPanState.lastState != .changed {
                 return
@@ -418,9 +423,12 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    //添加阴影
     func addShadow(toView targetContainerView:UIView) {
         
-        
+        /**
+         在创建UIView时，UIView内部会自动创建图层CALayer，通过Layer属性访问这个层。在UIView需要显示到屏幕上时，会调用drawRect进行绘图，将内容绘制到自己的图层，在拷贝到屏幕上。所以操作这个CALayer对象可以调整UIView的界面属性，如圆角，阴影（shadow）等。
+         */
         
         targetContainerView.layer.masksToBounds = false
         
@@ -429,7 +437,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         targetContainerView.layer.shadowOpacity = SlideOutOption.shadowOpacity
         
         targetContainerView.layer.shadowRadius = SlideOutOption.shadowRadius
-        
+        //减少离屏渲染计算，就是提前告诉CoreAnimation要渲染的view的形状
         targetContainerView.layer.shadowPath = UIBezierPath(rect: targetContainerView.bounds).cgPath
         
     }
@@ -437,11 +445,11 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     fileprivate func setOpenWindowLevel(){
     
         if SlideOutOption.hideStatusBar{
-        
+        //一旦创建出来，操作系统就接手管理，没法参与queue的管理，采用FIFO模式，即先进先出。这边为异步执行，和后台线程同时执行
             DispatchQueue.main.async(execute: {
-            //设置主窗口的Z值，UIWindowLevelStatusBar = 1000，这样主界面就在上
+            //设置主窗口的Z值，UIWindowLevelStatusBar = 1000，这样主窗口就在上
                 if let window = UIApplication.shared.keyWindow{
-                
+            //将当前window的windowlevel设置很大，这样这个window就显示到状态栏前方，不过现在这个功能先不用，不需要不显示状态栏
                     window.windowLevel = UIWindowLevelStatusBar + 1
                 }
             
@@ -505,6 +513,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    //获得当前左侧窗口打开的比率
     fileprivate func getOpendMyViewRatio()->CGFloat {
     
         let width:CGFloat = myContainerView.frame.size.width
@@ -521,8 +530,10 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         let scale:CGFloat = 1.0 - ((1 - SlideOutOption.contentViewScale)) * openLeftRation
         
+        //因为这里的myContaninerView的x值为负数，而要想让主视图移动正确位置，需要加上myViewWidth
         let drag:CGFloat = SlideOutOption.myViewWidth + myContainerView.frame.origin.x
         
+        //这里可以设置主视图是跟随左侧视图进行移动，还是选择主视图不移动就放大缩小
         SlideOutOption.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
         
     }
