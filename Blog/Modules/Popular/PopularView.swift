@@ -32,8 +32,6 @@ class PopularView: UIViewController {
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.green
-        
     }
     
 }

@@ -20,7 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.backgroundColor = UIColor.white
         
-        self.window?.rootViewController = MainView();
+        let slideMenuController = SlideOutViewController.getInstance()
+        
+        slideMenuController.automaticallyAdjustsScrollViewInsets = true
+        
+        self.window?.rootViewController = slideMenuController;
         
         self.window?.makeKeyAndVisible();
         

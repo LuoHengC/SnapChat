@@ -32,8 +32,6 @@ class HomeView: UIViewController {
         
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blue
-        
     }
     
     

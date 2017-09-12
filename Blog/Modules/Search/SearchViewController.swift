@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController {
     
     func setSearchViewTabBarItem(viewController view:UIViewController){
         
@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         
         NavigationItemConfig.setNavigationItem(title: "搜索" , navigationItem: view?.navigationItem)
         
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
     }
     
 }

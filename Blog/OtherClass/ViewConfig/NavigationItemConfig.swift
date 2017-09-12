@@ -18,9 +18,17 @@ class NavigationItemConfig: UINavigationController {
         
         navigationItem?.title = title
         
-        let item = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: nil)
+    }
+    
+    class func setNavigationLeftButton(navigationItem:UINavigationItem?) {
         
-        navigationItem?.leftBarButtonItem = item
+        let button = MyViewButton.getInstance().createButton(with: nil)
+        
+        let leftButtonView = UIView(frame: button.frame)
+        
+        leftButtonView.addSubview(button)
+        
+        navigationItem?.leftBarButtonItem = UIBarButtonItem(customView: leftButtonView)
         
     }
     
