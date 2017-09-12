@@ -328,13 +328,16 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
         case .ended , .cancelled :
             
+            //如果当前的手势状态不是changed的状态就return，因为当你滑动手势后，才可能造成失败
             if MyViewPanState.lastState != .changed {
                 
                 setClosedWindowLevel()
+                
                 return
                 
             }
             
+            //在当前视图的手势平移速度，单位points/s
             let velocity:CGPoint = panGestures.velocity(in: panGestures.view)
             
             let panInfo:PanInfo = panMyViewResultInfoForVelocity(velocity)
@@ -350,15 +353,15 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 openLeftWithVelocity(panInfo.velocity)
                 
             }else{
-            
-                if MyViewPanState.isHiddenAtStart{
                 
+                if MyViewPanState.isHiddenAtStart{
+                    
                     myViewController?.beginAppearanceTransition(false, animated: true)
                     
                 }
                 
                 closeLeftWithVelocity(panInfo.velocity)
-            
+                
             }
             
             
@@ -533,30 +536,31 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         //因为这里的myContaninerView的x值为负数，而要想让主视图移动正确位置，需要加上myViewWidth
         let drag:CGFloat = SlideOutOption.myViewWidth + myContainerView.frame.origin.x
         
-        //这里可以设置主视图是跟随左侧视图进行移动，还是选择主视图不移动就放大缩小
+        //这里可以设置主视图是跟随左侧视图进行移动，还是选择主视图不移动就放大缩小，这里采用仿射转换，因为可能考虑到后面会让主视图缩小等情况
         SlideOutOption.contentViewDrag == true ? (mainContainerView.transform = CGAffineTransform(translationX: drag, y: 0)) : (mainContainerView.transform = CGAffineTransform(scaleX: scale, y: scale))
         
     }
     
     fileprivate func panMyViewResultInfoForVelocity(_ velocity:CGPoint ) ->PanInfo {
     
-        let thresholdVelocity: CGFloat = 1000.0
+        let thresholdVelocity: CGFloat = 1000.0 //阀值
         
-        let pointOfNoReturn: CGFloat = CGFloat(floor(-SlideOutOption.myViewWidth)) + SlideOutOption.pointOfNoReturnWidth
+        let pointOfNoReturn: CGFloat = CGFloat(floor(-SlideOutOption.myViewWidth)) + SlideOutOption.pointOfNoReturnWidth //滑动到这个距离左侧视图不返回的point
         
-        let leftOrigin: CGFloat = myContainerView.frame.origin.x
+        let leftOrigin: CGFloat = myContainerView.frame.origin.x //移动完后，左侧视图的x值
         
         var panInfo:PanInfo = PanInfo(action: .close, shouldBounce: false, velocity: 0.0)
         
         panInfo.action = leftOrigin <= pointOfNoReturn ? .close : .open
         
-        if velocity.x >= thresholdVelocity {
+        //通过左右的滑动速率使左侧界面打开或关闭
+        if velocity.x >= thresholdVelocity { //向右滑动
             
             panInfo.action = .open
             
             panInfo.velocity = velocity.x
             
-        } else if velocity.x <= (-1.0 * thresholdVelocity) {
+        } else if velocity.x <= (-1.0 * thresholdVelocity) { //向左滑动
             
             panInfo.action = .close
             
@@ -571,20 +575,29 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     func openLeftWithVelocity(_ velocity: CGFloat)  {
         
         let xOrigin: CGFloat = myContainerView.frame.origin.x
+        
         let finalXOrigin: CGFloat = 0.0
         
         var frame = myContainerView.frame
+        
         frame.origin.x = finalXOrigin
         
         var duration: TimeInterval = Double(SlideOutOption.animationDuration)
+        
+        //如果为0就代表滑动速率不够快，不为0就代表滑动速率较快
         if velocity != 0.0 {
+            
+            //因为进入这里就代表滑动速度较快，此时动画的剩余持续时间就需要根据此时左侧视图的位置和滑动速度来取，这样左侧视图剩余动画时间可以根据当前的位置来滑动速度来取到合适的值
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
+            
             duration = Double(fmax(0.1, fmin(1.0, duration)))
+            
         }
         
         addShadow(toView:myContainerView)
+        
       //UIView最基本的动画方法之一，带有延迟，options配置动画的参数，可传入数组。
-        UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in  //这边闭包使用了self，可能会造成强引用循环，需要使用闭包捕获列表
+        UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in  //这边闭包使用了self，可能会造成强引用循环，需要使用闭包捕获列表，并且这边的闭包是escaping闭包，会在函数返回后在执行
             
             if let strongSelf = self {
                 
@@ -596,11 +609,13 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
 
             }
             
-        }){ [weak self](Bool) -> Void in
+        }){ [weak self](Bool) -> Void in //尾随闭包，对应completion，动画完成后所作的善后工作
             
             if let strongSelf = self {
                 
+                //界面打开后,这里禁止主界面的用户交互
                 strongSelf.disableContentInteraction()
+                
                 //触发viewDidAppear和viewDidDisAppear
                 strongSelf.myViewController?.endAppearanceTransition()
                 
@@ -637,15 +652,20 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 
                 strongSelf.opacityView.layer.opacity = 0.0
                 
-                strongSelf.mainContainerView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                strongSelf.mainContainerView.transform = CGAffineTransform(translationX: 0, y: 0)
                 
             }
             
         }) { [weak self](Bool) -> Void in
+            
             if let strongSelf = self {
+                
                 strongSelf.removeShadow(strongSelf.myContainerView)
+                
                 strongSelf.enableContentInteraction()
+                
                 strongSelf.myViewController?.endAppearanceTransition()
+                
             }
         }
         
