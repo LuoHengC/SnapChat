@@ -9,23 +9,30 @@
 import UIKit
 
 
-class HomeViewController  {
+class HomeViewController :UIViewController  {
     
-    func setHomeViewTabBarItem(viewController view:UIViewController){
+    init(){
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",
-            image: UIImage(named:"tabBar_home.png"),
-            selectImage: UIImage(named: "tabBar_home_highLight.png"))
+        super.init(nibName: nil, bundle: nil)
         
-        view.tabBarItem = tabBarItem
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",image: UIImage(named:"tabBar_home.png"),selectImage: UIImage(named: "tabBar_home_highLight.png"))
+        
+        self.tabBarItem = tabBarItem
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
     
-    func setHomeViewNavigationItem(viewController view:UIViewController?) {
+    convenience required init?(coder aDecoder: NSCoder) {
         
-        NavigationItemConfig.setNavigationItem(title: "主页" , navigationItem: view?.navigationItem)
+        self.init()
         
-        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
     }
     
 }

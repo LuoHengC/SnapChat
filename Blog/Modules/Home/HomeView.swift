@@ -8,31 +8,8 @@
 
 import UIKit
 
-class HomeView: UIViewController {
+class HomeView: UIView {
     
-    init(){
-        
-        super.init(nibName: nil, bundle: nil)
-        
-        let homeViewController = HomeViewController()
-        
-        homeViewController.setHomeViewTabBarItem(viewController: self)
-        
-        homeViewController.setHomeViewNavigationItem(viewController: self)
-        
-    }
-    
-   convenience required init?(coder aDecoder: NSCoder) {
-    
-        self.init()
-    
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-    }
-    
+  
     
 }
