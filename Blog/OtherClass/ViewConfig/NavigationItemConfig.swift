@@ -12,7 +12,7 @@ class NavigationItemConfig: UINavigationController {
     
     class func setNavigationItem(title:String? , navigationItem:UINavigationItem?){
         
-        guard let _ = title, let _ = navigationItem else {
+        guard let _ = title ,let _ = navigationItem else {
             return
         }
         

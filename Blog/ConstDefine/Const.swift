@@ -20,6 +20,8 @@ struct ConstColor {
     
     static let lightGray = UIColor(rgb:0x9F9F9F)
     
+    static let yellow = UIColor(rgb: 0xFFDE2C)
+    
 }
 
 struct ConstButtonSize {

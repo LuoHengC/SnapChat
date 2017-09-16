@@ -58,7 +58,5 @@ final class MyViewButton: UIButton {
         SlideOutViewController.getInstance().toggleMyView()
         
     }
-    
-    
-    
+
 }

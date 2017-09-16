@@ -8,29 +8,8 @@
 
 import UIKit
 
-class MessageView: UIViewController {
+class MessageView: UIView {
     
-    init(){
-        super.init(nibName: nil, bundle: nil)
-        
-        let messageViewController = MessageViewController()
-        
-        messageViewController.setMessageViewTabBarItem(viewController: self)
-        
-        messageViewController.setMessageViewNavigationItem(viewController: self)
-        
-    }
-    
-    convenience required init?(coder aDecoder: NSCoder) {
-        
-        self.init()
-        
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-    }
+   
     
 }

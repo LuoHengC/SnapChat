@@ -10,22 +10,22 @@ import UIKit
 
 struct SlideOutOption {
     
-    static let myViewWidth: CGFloat = 270.0
-    static let opacityViewBackgroundColor: UIColor = .gray
+    static let myViewWidth: CGFloat = 270.0 //设置左侧界面的宽度
+    static let opacityViewBackgroundColor: UIColor = .gray //主界面透明度层的颜色
     
-    static let panGesturesEnabled: Bool = true
-    static let tapGesturesEnabled: Bool = true
-    static let hideStatusBar: Bool = false
-    static var contentViewDrag:Bool = true
+    static let panGesturesEnabled: Bool = true //是否支持滑动手势
+    static let tapGesturesEnabled: Bool = true //是否支持触摸手势
+    static let hideStatusBar: Bool = false //隐藏状态栏
+    static var contentViewDrag:Bool = true //判断拖动完成后主界面的变换状态
     
-    static let shadowOffSet: CGSize = CGSize(width: 0, height: 0)
-    static let shadowOpacity: Float = 0.0
-    static let shadowRadius: CGFloat = 0.0
-    static let contentViewOpacity:CGFloat = 0.5
-    static let contentViewScale:CGFloat = 0.96
-    static let pointOfNoReturnWidth: CGFloat = 44.0
-    static let animationDuration: CGFloat = 0.4
-    static var animationOptions: UIViewAnimationOptions = []
+    static let shadowOffSet: CGSize = CGSize(width: 0, height: 0) //阴影变化量
+    static let shadowOpacity: Float = 0.0 //阴影透明度
+    static let shadowRadius: CGFloat = 0.0 //阴影圆角
+    static let contentViewOpacity:CGFloat = 0.5 //主界面透明层透明度
+    static let contentViewScale:CGFloat = 0.96 //主界面的缩放
+    static let pointOfNoReturnWidth: CGFloat = 64.0 //左侧界面移动不返回左侧的临界点
+    static let animationDuration: CGFloat = 0.4 //移动动画持续时间
+    static var animationOptions: UIViewAnimationOptions = [] //动画选项
     
     
 }
@@ -45,7 +45,7 @@ struct MyViewPanState {
 
 class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
-    private static let singleInstance = SlideOutViewController(mainViewController: MainView(), myViewController: MyView())
+    private static let singleInstance = SlideOutViewController(mainViewController: MainViewController(), myViewController: MyViewController())
     
     class func getInstance() -> SlideOutViewController{
     
@@ -305,7 +305,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             addShadow(toView: myContainerView)
             
-            setOpenWindowLevel()
+//            setOpenWindowLevel()
             
         case .changed:
             
@@ -331,7 +331,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             //如果当前的手势状态不是changed的状态就return，因为当你滑动手势后，才可能造成失败
             if MyViewPanState.lastState != .changed {
                 
-                setClosedWindowLevel()
+//                setClosedWindowLevel()
                 
                 return
                 
@@ -379,7 +379,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             closeMyView()
             
-            setClosedWindowLevel()
+//            setClosedWindowLevel()
             
         }else{
         
@@ -398,7 +398,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         closeLeftWithVelocity(0.0)
         
-        setClosedWindowLevel()
+//        setClosedWindowLevel()
         
     }
     
@@ -423,25 +423,6 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     func isMyViewOpen() -> Bool {
         
         return myViewController != nil && myContainerView.frame.origin.x == 0.0
-        
-    }
-    
-    //添加阴影
-    func addShadow(toView targetContainerView:UIView) {
-        
-        /**
-         在创建UIView时，UIView内部会自动创建图层CALayer，通过Layer属性访问这个层。在UIView需要显示到屏幕上时，会调用drawRect进行绘图，将内容绘制到自己的图层，在拷贝到屏幕上。所以操作这个CALayer对象可以调整UIView的界面属性，如圆角，阴影（shadow）等。
-         */
-        
-        targetContainerView.layer.masksToBounds = false
-        
-        targetContainerView.layer.shadowOffset = SlideOutOption.shadowOffSet
-        
-        targetContainerView.layer.shadowOpacity = SlideOutOption.shadowOpacity
-        
-        targetContainerView.layer.shadowRadius = SlideOutOption.shadowRadius
-        //减少离屏渲染计算，就是提前告诉CoreAnimation要渲染的view的形状
-        targetContainerView.layer.shadowPath = UIBezierPath(rect: targetContainerView.bounds).cgPath
         
     }
     
@@ -510,6 +491,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
         let openLeftRatio:CGFloat = getOpendMyViewRatio()
         
+        //openLeftRatio范围[0,1]
         let opacity:CGFloat = SlideOutOption.contentViewOpacity * openLeftRatio
         
         opacityView.layer.opacity = Float(opacity)
@@ -520,9 +502,10 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     fileprivate func getOpendMyViewRatio()->CGFloat {
     
         let width:CGFloat = myContainerView.frame.size.width
-        
+       
         let currentPosition:CGFloat = myContainerView.frame.origin.x - (-SlideOutOption.myViewWidth)
         
+         //最高270/270，最低0/270
         return currentPosition/width
         
     }
@@ -616,7 +599,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 //界面打开后,这里禁止主界面的用户交互
                 strongSelf.disableContentInteraction()
                 
-                //触发viewDidAppear和viewDidDisAppear
+                //触发viewDidAppear，和begin对应
                 strongSelf.myViewController?.endAppearanceTransition()
                 
             }
@@ -664,6 +647,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 
                 strongSelf.enableContentInteraction()
                 
+                //触发viewDidDisAppear，和begin对应
                 strongSelf.myViewController?.endAppearanceTransition()
                 
             }
@@ -671,9 +655,29 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    //禁止主视图的用户交互
     fileprivate func disableContentInteraction() {
         
         mainContainerView.isUserInteractionEnabled = false
+        
+    }
+    
+    //添加阴影
+    func addShadow(toView targetContainerView:UIView) {
+        
+        /**
+         在创建UIView时，UIView内部会自动创建图层CALayer，通过Layer属性访问这个层。在UIView需要显示到屏幕上时，会调用drawRect进行绘图，将内容绘制到自己的图层，在拷贝到屏幕上。所以操作这个CALayer对象可以调整UIView的界面属性，如圆角，阴影（shadow）等。
+         */
+        
+        targetContainerView.layer.masksToBounds = false
+        
+        targetContainerView.layer.shadowOffset = SlideOutOption.shadowOffSet
+        
+        targetContainerView.layer.shadowOpacity = SlideOutOption.shadowOpacity
+        
+        targetContainerView.layer.shadowRadius = SlideOutOption.shadowRadius
+        //减少离屏渲染计算，就是提前告诉CoreAnimation要渲染的view的形状
+        targetContainerView.layer.shadowPath = UIBezierPath(rect: targetContainerView.bounds).cgPath
         
     }
     
@@ -685,6 +689,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
     }
     
+    //恢复主视图的用户交互
     fileprivate func enableContentInteraction() {
         
         mainContainerView.isUserInteractionEnabled = true

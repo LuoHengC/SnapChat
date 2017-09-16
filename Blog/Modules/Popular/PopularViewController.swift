@@ -8,22 +8,31 @@
 
 import UIKit
 
-class PopularViewController {
+class PopularViewController : UIViewController {
     
-    func setPopularViewTabBarItem(viewController view:UIViewController ) {
+    init(){
+        
+        super.init(nibName: nil, bundle: nil)
         
         let tabBarItem = TabBarConfig.setTabBarItem(title:"热门", image:UIImage(named:"tabBar_friendTrends.png") , selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
         
-        view.tabBarItem = tabBarItem
+        self.tabBarItem = tabBarItem
         
+        NavigationItemConfig.setNavigationItem(title: "热门" , navigationItem: self.navigationItem)
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
     
-    func setPopularViewNavigationItem(viewController view:UIViewController?) {
+    convenience required init?(coder aDecoder: NSCoder) {
         
-        NavigationItemConfig.setNavigationItem(title: "热门" , navigationItem: view?.navigationItem)
+        self.init()
         
-        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
         
     }
     

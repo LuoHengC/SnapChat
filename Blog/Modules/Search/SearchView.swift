@@ -8,29 +8,8 @@
 
 import UIKit
 
-class SearchView: UIViewController {
+class SearchView: UIView {
     
-    init(){
-        super.init(nibName: nil, bundle: nil)
-        
-        let searchViewController = SearchViewController()
-        
-        searchViewController.setSearchViewNavigationItem(viewController: self)
-        
-        searchViewController.setSearchViewTabBarItem(viewController: self)
-        
-    }
-    
-    convenience required init?(coder aDecoder: NSCoder) {
-        
-        self.init()
-        
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-    }
+  
     
 }

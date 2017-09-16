@@ -8,30 +8,8 @@
 
 import UIKit
 
-class PopularView: UIViewController {
+class PopularView: UIView {
     
-    init(){
-        
-        super.init(nibName: nil, bundle: nil)
-        
-        let popularViewController = PopularViewController()
-        
-        popularViewController.setPopularViewTabBarItem(viewController:self)
-        
-        popularViewController.setPopularViewNavigationItem(viewController: self)
-        
-    }
     
-    convenience required init?(coder aDecoder: NSCoder) {
-        
-        self.init()
-        
-    }
-
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-    }
     
 }

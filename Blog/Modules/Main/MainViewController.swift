@@ -8,20 +8,33 @@
 
 import UIKit
 
-final class MainViewController: UITabBarController
-{
+final class MainViewController: UITabBarController {
     
-    class func addMainViewTabBar(childControllers:[UIViewController] ) -> [UIViewController]
-    {
+    override func viewDidLoad() {
+        
+        let viewControllerArray:[UIViewController] = [HomeViewController(), SearchViewController(), MessageViewController(), PopularViewController()]
+        
+        self.viewControllers = addMainViewTabBar(childControllers: viewControllerArray)
+    }
+    
+    func addMainViewTabBar(childControllers:[UIViewController] ) -> [UIViewController]{
+        
         var tabBarArrary:[UIViewController] = []
         
-        for (viewController) in childControllers
-        {
+        for (viewController) in childControllers {
+            
             let navigation = UINavigationController(rootViewController: viewController)
             
             tabBarArrary.append(navigation)
+            
         }
+        
         return tabBarArrary
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        
     }
 
 }

@@ -8,23 +8,31 @@
 
 import UIKit
 
-class MessageViewController {
+class MessageViewController : UIViewController {
     
-    func setMessageViewTabBarItem(viewController view:UIViewController) {
+    init(){
+        super.init(nibName: nil, bundle: nil)
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:"消息",
-            image: UIImage(named:"tabBar_friendTrends.png"),
-            selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"消息",image: UIImage(named:"tabBar_friendTrends.png"),selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
         
-        view.tabBarItem = tabBarItem
+        self.tabBarItem = tabBarItem
+        
+        NavigationItemConfig.setNavigationItem(title: "消息" , navigationItem: self.navigationItem)
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
     
-    func setMessageViewNavigationItem(viewController view:UIViewController?) {
+    convenience required init?(coder aDecoder: NSCoder) {
         
-        NavigationItemConfig.setNavigationItem(title: "消息" , navigationItem: view?.navigationItem)
+        self.init()
         
-        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
     }
     
 }

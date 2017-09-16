@@ -8,23 +8,31 @@
 
 import UIKit
 
-class SearchViewController {
+class SearchViewController : UIViewController {
     
-    func setSearchViewTabBarItem(viewController view:UIViewController){
+    init(){
+        super.init(nibName: nil, bundle: nil)
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:"搜索",
-            image: UIImage(named:"tabBar_friendTrends.png"),
-            selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
-
-        view.tabBarItem = tabBarItem
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"搜索",image: UIImage(named:"tabBar_friendTrends.png"),selectImage: UIImage(named: "tabBar_friendTrends_highLight.png"))
+        
+        self.tabBarItem = tabBarItem
+        
+        NavigationItemConfig.setNavigationItem(title: "搜索" , navigationItem: self.navigationItem)
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
     
-    func setSearchViewNavigationItem(viewController view:UIViewController?) {
+    convenience required init?(coder aDecoder: NSCoder) {
         
-        NavigationItemConfig.setNavigationItem(title: "搜索" , navigationItem: view?.navigationItem)
+        self.init()
         
-        NavigationItemConfig.setNavigationLeftButton(navigationItem: view?.navigationItem)
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
     }
     
 }
