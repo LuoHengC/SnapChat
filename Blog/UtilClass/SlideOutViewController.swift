@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SlideOutOption {
+fileprivate struct SlideOutOption {
     
     static let myViewWidth: CGFloat = 270.0 //设置左侧界面的宽度
     static let opacityViewBackgroundColor: UIColor = .gray //主界面透明度层的颜色
@@ -30,7 +30,7 @@ struct SlideOutOption {
     
 }
 
-struct MyViewPanState {
+fileprivate struct MyViewPanState {
     
     static var lastState: UIGestureRecognizerState = .ended
     
