@@ -53,7 +53,7 @@ final class MyViewButton: UIButton {
         
     }
     
-    func btnOnClick() {
+    @objc func btnOnClick() {
        
         SlideOutViewController.getInstance().toggleMyView()
         

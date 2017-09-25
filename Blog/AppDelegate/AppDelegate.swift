@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let slideMenuController = SlideOutViewController.getInstance()
         
-        slideMenuController.automaticallyAdjustsScrollViewInsets = true
-        
         self.window?.rootViewController = slideMenuController;
         
         self.window?.makeKeyAndVisible();

@@ -11,7 +11,11 @@ import UIKit
 
 class HomeViewController :UIViewController  {
     
+    let viewControllers:[UIViewController]
+    
     init(){
+        
+        viewControllers = [HomePageViewController() , LiveViewController()]
         
         super.init(nibName: nil, bundle: nil)
         
@@ -32,6 +36,10 @@ class HomeViewController :UIViewController  {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        let homeView = HomeView(viewControllers: viewControllers)
+        
+        self.view.addSubview(homeView)
         
     }
     

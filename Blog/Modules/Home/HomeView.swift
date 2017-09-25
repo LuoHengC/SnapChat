@@ -18,7 +18,7 @@ fileprivate struct HomeViewOptions {
 
 class HomeView: UIView {
     
-    let viewControllers:[UIViewController]
+    let controllers:[UIViewController]
     
     let homeScrollView : UIScrollView = {
         
@@ -36,7 +36,7 @@ class HomeView: UIView {
     
     init(viewControllers:[UIViewController]){
     
-        self.viewControllers = viewControllers
+        self.controllers = viewControllers
         
         super.init(frame: UIScreen.main.bounds)
         
@@ -47,11 +47,16 @@ class HomeView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension HomeView{
     
     func setUp() {
         
         setUpView()
         setScrollViewContentView()
+        layoutContentScrollView()
+        print(homeScrollView.frame)
         
     }
     
@@ -64,17 +69,43 @@ class HomeView: UIView {
     
     func setScrollViewContentView() {
         
-        homeScrollView.backgroundColor = HomeViewOptions.defaultColor
+        homeScrollView.backgroundColor = .red
         homeScrollView.isScrollEnabled = HomeViewOptions.isScrollEnable
-        
+//        homeScrollView.frame = self.frame
         self.addSubview(homeScrollView)
         
     }
     
     func layoutContentScrollView() {
+    
+//        NSLayoutConstraint.init(item: homeScrollView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1.0, constant: 0).isActive = true
+//        NSLayoutConstraint.init(item: homeScrollView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1.0, constant: 0).isActive = true
+//        NSLayoutConstraint.init(item: homeScrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .topMargin, multiplier: 1.0, constant: 0).isActive = true
+//        NSLayoutConstraint.init(item: homeScrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1.0, constant: 0).isActive = true
+       
         
+    }
+    
+    func constructPagingViewControllers() {
         
+        for (_ , viewController) in controllers.enumerated() {
+            
+            if have(view: viewController.view){
+                
+                viewController.willMove(toParentViewController: nil)
+                viewController.view.removeFromSuperview()
+                viewController.removeFromParentViewController()
+                
+            }
+            
+        }
         
+    }
+    
+    func have(view:UIView) -> Bool {
+
+        return self.subviews.contains(view)
+
     }
     
 }
