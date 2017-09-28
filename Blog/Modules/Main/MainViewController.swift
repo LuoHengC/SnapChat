@@ -15,6 +15,7 @@ final class MainViewController: UITabBarController {
         let viewControllerArray:[UIViewController] = [HomeViewController(), SearchViewController(), MessageViewController(), PopularViewController()]
         
         self.viewControllers = addMainViewTabBar(childControllers: viewControllerArray)
+        
     }
     
     func addMainViewTabBar(childControllers:[UIViewController] ) -> [UIViewController]{

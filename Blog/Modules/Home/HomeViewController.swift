@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct ApplicationControlsSize {
+    
+    static fileprivate(set) var navigationHeight:CGFloat?
+    static fileprivate(set) var tabBarHeight:CGFloat?
+    static fileprivate(set) var statusBarHeight:CGFloat = UIApplication.shared.statusBarFrame.height
+    
+}
 
 class HomeViewController :UIViewController  {
     
@@ -19,11 +26,7 @@ class HomeViewController :UIViewController  {
         
         super.init(nibName: nil, bundle: nil)
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",image: UIImage(named:"tabBar_home.png"),selectImage: UIImage(named: "tabBar_home_highLight.png"))
-        
-        self.tabBarItem = tabBarItem
-        
-        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
+        setUp()
         
     }
     
@@ -37,10 +40,58 @@ class HomeViewController :UIViewController  {
         
         super.viewDidLoad()
         
-        let homeView = HomeView(viewControllers: viewControllers)
+        ApplicationControlsSize.navigationHeight = self.navigationController?.navigationBar.frame.height
+        ApplicationControlsSize.tabBarHeight = self.tabBarController?.tabBar.frame.height
         
-        self.view.addSubview(homeView)
+        if let navHeight = ApplicationControlsSize.navigationHeight , let tabHeight = ApplicationControlsSize.tabBarHeight {
+            
+            let homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ApplicationControlsSize.statusBarHeight, tabBarHeight: tabHeight)
+            
+            self.view.addSubview(homeView)
+
+        }
         
     }
+    
+}
+
+extension HomeViewController{
+    
+    func setUp() {
+        
+        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",image: UIImage(named:"tabBar_home.png"),selectImage: UIImage(named: "tabBar_home_highLight.png"))
+        
+        self.tabBarItem = tabBarItem
+        
+        NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
+        
+    }
+    
+//    func have(viewController:UIViewController) -> Bool {
+//
+//        return self.childViewControllers.contains(viewController)
+//
+//    }
+//
+//    func setUpViewController() {
+//
+//        for viewController in viewControllers {
+//
+//            if have(viewController: viewController){
+//               continue
+//            }
+//
+//            guard let pageView = viewController.view else{
+//                 fatalError("\(viewController) doesn't have any view")
+//            }
+//
+//            pageView.frame = .zero
+//            pageView.translatesAutoresizingMaskIntoConstraints = false
+//
+//
+//        }
+//
+//    }
+    
     
 }

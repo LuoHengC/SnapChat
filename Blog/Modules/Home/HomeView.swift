@@ -19,6 +19,8 @@ fileprivate struct HomeViewOptions {
 class HomeView: UIView {
     
     let controllers:[UIViewController]
+    let topBarHeight:CGFloat
+    let tabHeight:CGFloat
     
     let homeScrollView : UIScrollView = {
         
@@ -34,11 +36,15 @@ class HomeView: UIView {
         
     }(UIScrollView(frame: .zero))
     
-    init(viewControllers:[UIViewController]){
-    
-        self.controllers = viewControllers
+    init(viewControllers:[UIViewController] , topHeight:CGFloat , tabBarHeight:CGFloat){
+        
+        controllers = viewControllers
+        topBarHeight = topHeight
+        tabHeight = tabBarHeight
         
         super.init(frame: UIScreen.main.bounds)
+        
+        setScrollViewFrame()
         
         setUp()
     
@@ -55,9 +61,8 @@ extension HomeView{
         
         setUpView()
         setScrollViewContentView()
-        layoutContentScrollView()
         print(homeScrollView.frame)
-        
+        print(homeScrollView.contentSize)
     }
     
     func setUpView() {
@@ -71,41 +76,16 @@ extension HomeView{
         
         homeScrollView.backgroundColor = .red
         homeScrollView.isScrollEnabled = HomeViewOptions.isScrollEnable
-//        homeScrollView.frame = self.frame
         self.addSubview(homeScrollView)
         
     }
     
-    func layoutContentScrollView() {
-    
-//        NSLayoutConstraint.init(item: homeScrollView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1.0, constant: 0).isActive = true
-//        NSLayoutConstraint.init(item: homeScrollView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1.0, constant: 0).isActive = true
-//        NSLayoutConstraint.init(item: homeScrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .topMargin, multiplier: 1.0, constant: 0).isActive = true
-//        NSLayoutConstraint.init(item: homeScrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1.0, constant: 0).isActive = true
-       
+    func setScrollViewFrame() {
         
-    }
-    
-    func constructPagingViewControllers() {
+        homeScrollView.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y + topBarHeight, width: self.bounds.size.width, height: self.bounds.size.height - topBarHeight - tabHeight)
         
-        for (_ , viewController) in controllers.enumerated() {
+        homeScrollView.contentSize = CGSize(width: homeScrollView.frame.width * CGFloat(controllers.count), height: homeScrollView.frame.height)
             
-            if have(view: viewController.view){
-                
-                viewController.willMove(toParentViewController: nil)
-                viewController.view.removeFromSuperview()
-                viewController.removeFromParentViewController()
-                
-            }
-            
-        }
-        
-    }
-    
-    func have(view:UIView) -> Bool {
-
-        return self.subviews.contains(view)
-
     }
     
 }
