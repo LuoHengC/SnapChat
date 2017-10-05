@@ -12,7 +12,7 @@ struct ApplicationControlsSize {
     
     static fileprivate(set) var navigationHeight:CGFloat?
     static fileprivate(set) var tabBarHeight:CGFloat?
-    static fileprivate(set) var statusBarHeight:CGFloat = UIApplication.shared.statusBarFrame.height
+    static let statusBarHeight:CGFloat = UIApplication.shared.statusBarFrame.height
     
 }
 

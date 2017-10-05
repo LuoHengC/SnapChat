@@ -11,7 +11,7 @@ import UIKit
 fileprivate struct SlideOutOption {
     
     static let myViewWidth: CGFloat = 300.0 //设置左侧界面的宽度
-    static let opacityViewBackgroundColor: UIColor = .gray //主界面透明度层的颜色
+    static let opacityViewBackgroundColor: UIColor = ConstColor.gray //主界面透明度层的颜色
     
     static let panGesturesEnabled: Bool = true //是否支持滑动手势
     static let tapGesturesEnabled: Bool = true //是否支持触摸手势
@@ -99,7 +99,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         mainContainerView = UIView(frame: view.bounds)
         
-        mainContainerView.backgroundColor = UIColor.clear
+        mainContainerView.backgroundColor = ConstColor.clear
         
         mainContainerView.autoresizingMask = [.flexibleHeight , .flexibleHeight]
         
@@ -129,7 +129,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             myContainerView = UIView(frame: leftFrame)
             
-            myContainerView.backgroundColor = UIColor.clear
+            myContainerView.backgroundColor = ConstColor.clear
             
             myContainerView.autoresizingMask = UIViewAutoresizing.flexibleHeight
             

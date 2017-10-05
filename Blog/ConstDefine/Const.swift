@@ -16,6 +16,8 @@ struct ConstColor {
     static let darkGray = UIColor(rgb:0x758996)
     static let lightGray = UIColor(rgb:0x9F9F9F)
     static let yellow = UIColor(rgb: 0xFFDE2C)
+    static let clear = UIColor.clear
+    static let white = UIColor.white
     
 }
 

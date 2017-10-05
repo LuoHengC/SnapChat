@@ -12,7 +12,7 @@ class LiveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = ConstColor.red
         // Do any additional setup after loading the view.
     }
 
