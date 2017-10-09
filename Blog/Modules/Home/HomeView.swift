@@ -90,7 +90,7 @@ extension HomeView{
         self.addSubview(homeScrollView)
         
         /**
-         scrollView在设置了isPagingEnabled后，每一页的大小就为自身bounds的大小，水平或垂直的滚动距离是bounds的整数倍
+         scrollView在设置了isPagingEnabled后，每一页的大小就为自身bounds的大小，水平或垂直的滚动距离是一页bounds的整数倍
          */
         
         for ( index ,viewController) in controllers.enumerated()  {

@@ -203,7 +203,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
                 addChildViewController(viewController)
                 
                 targetView.addSubview(viewController.view)
-    //在一个viewController添加或者移除一个containerView时调用，告诉ios已经完成添加（或删除）子控制器的操作
+    //在一个viewController添加或者移除一个containerView时调用，告诉ios已经完成添加（或删除）子控制器的操作。
                 viewController.didMove(toParentViewController: self)
                 
             }

@@ -36,6 +36,12 @@ class HomeViewController :UIViewController  {
         
     }
     
+    override func viewWillLayoutSubviews() {
+        
+        setUpViewController()
+        
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -66,32 +72,32 @@ extension HomeViewController{
         NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
+
+    func setUpViewController() {
+
+        for viewController in viewControllers {
+
+            if have(viewController: viewController){
+               continue
+            }
+
+            guard let _ = viewController.view else{
+                 fatalError("\(viewController) doesn't have any view")
+            }
+            
+            addChildViewController(viewController)
+            
+            viewController.didMove(toParentViewController: self)
+
+        }
+
+    }
     
-//    func have(viewController:UIViewController) -> Bool {
-//
-//        return self.childViewControllers.contains(viewController)
-//
-//    }
-//
-//    func setUpViewController() {
-//
-//        for viewController in viewControllers {
-//
-//            if have(viewController: viewController){
-//               continue
-//            }
-//
-//            guard let pageView = viewController.view else{
-//                 fatalError("\(viewController) doesn't have any view")
-//            }
-//
-//            pageView.frame = .zero
-//            pageView.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        }
-//
-//    }
+    func have(viewController:UIViewController) -> Bool {
+        
+        return self.childViewControllers.contains(viewController)
+        
+    }
     
     
 }
