@@ -22,16 +22,11 @@ final class MyViewButton: UIButton {
         
         let button = UIButton(type: UIButtonType.custom)
         
-        button.frame = CGRect (origin: ConstButtonSize.buttonOrigin, size: ConstButtonSize.buttonSize)
-        
+        button.frame = CGRect (origin: ConstButtonSize.buttonOriginZero, size: ConstButtonSize.buttonSize)
         button.backgroundColor = ConstColor.gray
-        
         button.layer.cornerRadius = button.frame.width/2
-        
         button.layer.masksToBounds = true
-        
         button.contentMode = .scaleAspectFill
-        
         button.addTarget(self, action:#selector(MyViewButton.btnOnClick) , for: .touchUpInside)
         
         if let img = image

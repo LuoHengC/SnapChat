@@ -43,6 +43,7 @@
 		E9DE2E5B1F2A2CC90053D49D /* tabBar_home_highLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E581F2A2CC90053D49D /* tabBar_home_highLight.png */; };
 		E9DE2E5C1F2A2CC90053D49D /* tabBar_home_highLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E591F2A2CC90053D49D /* tabBar_home_highLight@2x.png */; };
 		E9DE2E5D1F2A2CCA0053D49D /* tabBar_home_highLight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E5A1F2A2CC90053D49D /* tabBar_home_highLight@3x.png */; };
+		E9F9F5C21F98F49000E0DE66 /* ProtocolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9F5C11F98F49000E0DE66 /* ProtocolManager.swift */; };
 		E9FCB6501F0BD771006402C4 /* BlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* BlogTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,7 @@
 		E9DE2E581F2A2CC90053D49D /* tabBar_home_highLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_home_highLight.png; sourceTree = "<group>"; };
 		E9DE2E591F2A2CC90053D49D /* tabBar_home_highLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_home_highLight@2x.png"; sourceTree = "<group>"; };
 		E9DE2E5A1F2A2CC90053D49D /* tabBar_home_highLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_home_highLight@3x.png"; sourceTree = "<group>"; };
+		E9F9F5C11F98F49000E0DE66 /* ProtocolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolManager.swift; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* Blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64B1F0BD771006402C4 /* BlogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* BlogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTests.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		E9DE2E0A1F2751340053D49D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				E9F9F5C11F98F49000E0DE66 /* ProtocolManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				E90A4C381F78028A006A1F40 /* HomePageViewController.swift in Sources */,
 				E960C0041F3CBB0C005790BF /* PopularViewController.swift in Sources */,
 				E960BFF81F3CBAAC005790BF /* HomeViewController.swift in Sources */,
+				E9F9F5C21F98F49000E0DE66 /* ProtocolManager.swift in Sources */,
 				E960BFFF1F3CBAE5005790BF /* MessageView.swift in Sources */,
 				E960C0001F3CBAE5005790BF /* MessageViewController.swift in Sources */,
 				E960C0081F3CBB23005790BF /* SearchViewController.swift in Sources */,
@@ -674,7 +678,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.BlogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blog.app/Blog";
 			};
@@ -690,7 +694,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.luoheng.BlogTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blog.app/Blog";
 			};

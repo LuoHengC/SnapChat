@@ -16,9 +16,10 @@ struct ApplicationControlsSize {
     
 }
 
-class HomeViewController :UIViewController  {
+class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewButtonProtocol {
     
     let viewControllers:[UIViewController]
+    var homeView:HomeView?
     
     init(){
         
@@ -51,9 +52,19 @@ class HomeViewController :UIViewController  {
         
         if let navHeight = ApplicationControlsSize.navigationHeight , let tabHeight = ApplicationControlsSize.tabBarHeight {
             
-            let homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ApplicationControlsSize.statusBarHeight, tabBarHeight: tabHeight)
+            homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ApplicationControlsSize.statusBarHeight, tabBarHeight: tabHeight)
             
-            self.view.addSubview(homeView)
+            if let home = homeView {
+                
+                home.homeScrollView.delegate = self
+                
+                home.delegate = self
+                
+                self.view.addSubview(home)
+                
+                self.navigationItem.titleView = home.navTitleView
+                
+            }
 
         }
         
@@ -99,5 +110,14 @@ extension HomeViewController{
         
     }
     
+}
+
+extension HomeViewController{
+    
+    func navTitleButtonOnClick(_ sender:UIButton) {
+        
+        print(sender.tag)
+        
+    }
     
 }

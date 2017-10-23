@@ -10,9 +10,22 @@ import UIKit
 
 class HomePageViewController: UIViewController {
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init() {
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = "主页"
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ConstColor.blue
+        
         // Do any additional setup after loading the view.
     }
 

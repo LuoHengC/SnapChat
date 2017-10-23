@@ -16,15 +16,16 @@ fileprivate struct HomeViewOptions {
     
 }
 
-class HomeView: UIView , UIScrollViewDelegate {
+class HomeView: UIView {
     
     let controllers:[UIViewController]
     let topBarHeight:CGFloat
     let tabHeight:CGFloat
     var scrollViewRect:CGRect = CGRect(x: 0, y: 0, width: 0, height: 0 )
     
+    weak var delegate:NavTitleViewButtonProtocol?
+    
     let homeScrollView : UIScrollView = {
-        
         $0.isPagingEnabled = true
         $0.isDirectionalLockEnabled = true
         $0.showsVerticalScrollIndicator = false
@@ -32,10 +33,11 @@ class HomeView: UIView , UIScrollViewDelegate {
         $0.scrollsToTop = false
         $0.bounces = false
         $0.translatesAutoresizingMaskIntoConstraints = false
-        
         return $0
-        
     }(UIScrollView(frame: .zero))
+    
+    //显示在导航栏中间的view
+    var navTitleView :UIView?
     
     init(viewControllers:[UIViewController] , topHeight:CGFloat , tabBarHeight:CGFloat){
         
@@ -63,6 +65,7 @@ extension HomeView{
         setScrollViewFrame()
         setUpView()
         setScrollViewContentView()
+        setNavTitleView()
         
     }
     
@@ -73,17 +76,25 @@ extension HomeView{
         
     }
     
+    func setNavTitleView() {
+        
+        navTitleView = UIView(frame: CGRect(x: 0, y: 0, width: ConstButtonSize.navTitleButtonSize.width * CGFloat(controllers.count), height: ConstButtonSize.navTitleButtonSize.height))
+        
+        navTitleView?.backgroundColor = .clear
+        
+        addBtn(to: navTitleView)
+        
+    }
+    
     func setScrollViewFrame() {
         
         homeScrollView.frame = scrollViewRect
-        
         homeScrollView.contentSize = CGSize(width: homeScrollView.frame.width * CGFloat(controllers.count), height: homeScrollView.frame.height)
         
     }
     
     func setScrollViewContentView() {
         
-        homeScrollView.delegate = self
         homeScrollView.backgroundColor = HomeViewOptions.defaultColor
         homeScrollView.isScrollEnabled = HomeViewOptions.isScrollEnable
         
@@ -104,6 +115,57 @@ extension HomeView{
             
         }
         
+    }
+    
+    func addBtn(to titleView:UIView?) {
+        
+        for (index , viewController) in controllers.enumerated() {
+            
+            let button = createNavTitleBtn(title: viewController.title, tag: index)
+            
+            button.frame.origin.x = button.frame.size.width * CGFloat(index)
+            
+            titleView?.addSubview(button)
+            
+        }
+        
+    }
+    
+    func createNavTitleBtn(title:String? ,tag:Int) -> UIButton {
+        
+        let button  = UIButton(type: .custom)
+        
+        button.frame = CGRect(x: 0, y: 0, width: ConstButtonSize.navTitleButtonSize.width, height: ConstButtonSize.navTitleButtonSize.height)
+        
+        let attributes = [NSAttributedStringKey.font : UIFont.systemFont(ofSize: ConstFontSize.fontSize)]
+        
+        if let strTitle = title{
+            
+            let attributedString = NSAttributedString(string: strTitle, attributes: attributes)
+            
+            button.setAttributedTitle(attributedString, for: .normal)
+            
+        }
+        
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(navTitleBtnOnClick(_:)), for: .touchUpInside)
+        button.tag = tag
+        
+        return button
+        
+    }
+    
+}
+
+extension HomeView{
+    
+    @objc func navTitleBtnOnClick(_ sender:UIButton) {
+        
+        if let delegate = self.delegate {
+            
+            delegate.navTitleButtonOnClick(sender)
+            
+        }
     }
     
 }
