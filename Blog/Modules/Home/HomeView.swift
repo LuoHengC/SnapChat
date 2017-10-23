@@ -19,11 +19,16 @@ fileprivate struct HomeViewOptions {
 class HomeView: UIView {
     
     let controllers:[UIViewController]
+    
     let topBarHeight:CGFloat
+    
     let tabHeight:CGFloat
+    
     var scrollViewRect:CGRect = CGRect(x: 0, y: 0, width: 0, height: 0 )
     
     weak var delegate:NavTitleViewButtonProtocol?
+    
+    let navTitleLine:UIView
     
     let homeScrollView : UIScrollView = {
         $0.isPagingEnabled = true
@@ -44,6 +49,7 @@ class HomeView: UIView {
         controllers = viewControllers
         topBarHeight = topHeight
         tabHeight = tabBarHeight
+        navTitleLine = UIView(frame: .zero)
         
         super.init(frame: UIScreen.main.bounds)
         
@@ -79,10 +85,18 @@ extension HomeView{
     func setNavTitleView() {
         
         navTitleView = UIView(frame: CGRect(x: 0, y: 0, width: ConstButtonSize.navTitleButtonSize.width * CGFloat(controllers.count), height: ConstButtonSize.navTitleButtonSize.height))
-        
         navTitleView?.backgroundColor = .clear
         
         addBtn(to: navTitleView)
+        setNavTitleLine()
+        
+    }
+    
+    func setNavTitleLine(){
+        
+        navTitleLine.frame = CGRect(x: 0, y: ConstButtonSize.navTitleButtonSize.height, width: ConstButtonSize.navTitleButtonSize.width, height: 3)
+        navTitleLine.backgroundColor = ConstColor.red
+        navTitleView?.addSubview(navTitleLine)
         
     }
     

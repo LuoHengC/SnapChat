@@ -21,6 +21,7 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
     let viewControllers:[UIViewController]
     var homeView:HomeView?
     
+    
     init(){
         
         viewControllers = [HomePageViewController() , LiveViewController()]
@@ -116,8 +117,21 @@ extension HomeViewController{
     
     func navTitleButtonOnClick(_ sender:UIButton) {
         
-        print(sender.tag)
         
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if let home = homeView{
+            
+            let navTitleLine = home.navTitleLine
+            
+            let xFromCenter: CGFloat = scrollView.contentOffset.x / home.frame.size.width
+            
+            navTitleLine.transform = CGAffineTransform(translationX:navTitleLine.frame.size.width * xFromCenter, y:0)
+            
+        }
     }
     
 }
