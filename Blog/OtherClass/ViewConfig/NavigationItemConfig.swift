@@ -17,13 +17,11 @@ class NavigationItemConfig: UINavigationController {
         }
         
         navigationItem?.title = title
-        
     }
     
     class func setNavigationLeftButton(navigationItem:UINavigationItem?) {
         
         let button = MyViewButton.getInstance().createButton(with: nil)
-        
         let leftButtonView = UIView(frame: button.frame)
         
         leftButtonView.addSubview(button)

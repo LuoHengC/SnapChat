@@ -39,9 +39,7 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
     }
     
     override func viewWillLayoutSubviews() {
-        
         setUpViewController()
-        
     }
     
     override func viewDidLoad() {
@@ -55,8 +53,8 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
             
             homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ApplicationControlsSize.statusBarHeight, tabBarHeight: tabHeight)
             
-            if let home = homeView {
-                
+            if let home = homeView
+            {
                 home.homeScrollView.delegate = self
                 
                 home.delegate = self
@@ -64,7 +62,6 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
                 self.view.addSubview(home)
                 
                 self.navigationItem.titleView = home.navTitleView
-                
             }
         }
     }
@@ -81,60 +78,58 @@ extension HomeViewController{
         NavigationItemConfig.setNavigationLeftButton(navigationItem: self.navigationItem)
         
     }
-
+    
     func setUpViewController() {
-
+        
         for viewController in viewControllers {
-
-            if have(viewController: viewController){
-               continue
+            
+            if have(viewController: viewController)
+            {
+                continue
             }
-
+            
             guard let _ = viewController.view else{
-                 fatalError("\(viewController) doesn't have any view")
+                fatalError("\(viewController) doesn't have any view")
             }
             
             addChildViewController(viewController)
             
             viewController.didMove(toParentViewController: self)
-
+            
         }
-
     }
     
     func have(viewController:UIViewController) -> Bool {
-        
         return self.childViewControllers.contains(viewController)
-        
     }
-    
 }
 
 extension HomeViewController{
     
     func navTitleButtonOnClick(_ sender:UIButton) {
         
-        if let home = homeView{
-            
+        if let home = homeView
+        {
             UIView.animate(withDuration: 0.5, animations: {
-                
                 home.homeScrollView.contentOffset = CGPoint(x: CGFloat(sender.tag) * ConstScreenSize.screenWidth , y: 0);
-                
             })
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+       
+        
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if let home = homeView{
-            
+        if let home = homeView
+        {
             let navTitleLine = home.navTitleLine
-            
             let xRatio: CGFloat = scrollView.contentOffset.x / home.frame.size.width
             
             navTitleLine.transform = CGAffineTransform(translationX: navTitleLine.frame.size.width * xRatio, y: 0)
-            
         }
     }
-    
 }

@@ -109,8 +109,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         view.insertSubview(opacityView, at: 1)
         
-        if myViewController != nil {
-            
+        if myViewController != nil
+        {
             var leftFrame: CGRect = view.bounds
             
             leftFrame.size.width = SlideOutOption.myViewWidth
@@ -137,16 +137,15 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     //通过重写这个方法，在视图布局子视图之前来做一些改变
     override func viewWillLayoutSubviews() {
-        
         setUpViewController(mainContainerView, targetViewController: mainViewController)
         setUpViewController(myContainerView, targetViewController: myViewController)
-        
     }
     
     //返回view controller当前的视图取向
     override var supportedInterfaceOrientations:UIInterfaceOrientationMask{
     
-        if let mainController = self.mainViewController{
+        if let mainController = self.mainViewController
+        {
             return mainController.supportedInterfaceOrientations
         }
         
@@ -170,8 +169,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             viewController.view.frame = targetView.bounds
             
-            if (!childViewControllers.contains(viewController)) {
-                
+            if (!childViewControllers.contains(viewController))
+            {
                 addChildViewController(viewController)
                 
                 targetView.addSubview(viewController.view)
@@ -183,15 +182,15 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     func removeLeftGestures(){
     
-        if myViewPanGesture != nil {
-            
+        if myViewPanGesture != nil
+        {
             view.removeGestureRecognizer(myViewPanGesture!)
             
             myViewPanGesture = nil
         }
         
-        if myViewTapGesture != nil {
-            
+        if myViewTapGesture != nil
+        {
             view.removeGestureRecognizer(myViewTapGesture!)
             
             myViewTapGesture = nil
@@ -202,17 +201,18 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     //添加滑动和触摸手势
     func addMyViewGestures(){
         
-        if myViewController != nil {
-            
-            if SlideOutOption.panGesturesEnabled {
-                
-                if myViewPanGesture == nil {
-                
+        if myViewController != nil
+        {
+            if SlideOutOption.panGesturesEnabled
+            {
+                if myViewPanGesture == nil
+                {
                     myViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(SlideOutViewController.handleMyViewPanGestures(_:)))
                     
                     myViewPanGesture?.delegate = self
                     
-                    if let panGestures = myViewPanGesture {
+                    if let panGestures = myViewPanGesture
+                    {
                         view.addGestureRecognizer(panGestures)
                     }
                     
@@ -220,13 +220,14 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
              
                 if SlideOutOption.tapGesturesEnabled {
                     
-                    if myViewTapGesture == nil {
-                    
+                    if myViewTapGesture == nil
+                    {
                         myViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(SlideOutViewController.toggleMyView))
                         
                         myViewTapGesture?.delegate = self
                         
-                        if let tapGesture = myViewTapGesture{
+                        if let tapGesture = myViewTapGesture
+                        {
                         //将当前的触碰触摸添加到透明视图里面，这样在拉出左边的视图后，只有点击透明视图在收回
                             opacityView.addGestureRecognizer(tapGesture)
                         }
@@ -238,8 +239,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     @objc func handleMyViewPanGestures(_ panGestures:UIPanGestureRecognizer){
         
-        switch panGestures.state {
-            
+        switch panGestures.state
+        {
         case .began:
             //开始的时候判断触摸手势是否结束，没结束就return
             if MyViewPanState.lastState != .ended && MyViewPanState.lastState != .cancelled && MyViewPanState.lastState != .failed {
@@ -254,7 +255,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             //translation:in:方法返回在指定坐标系统中的平移量
             let translation = panGestures.translation(in: view)
             //当前手势为从右向左滑并且左侧界面没开
-            if translation.x < 0 && !MyViewPanState.isOpenAtSatrt {
+            if translation.x < 0 && !MyViewPanState.isOpenAtSatrt
+            {
                 return
             }
             
@@ -263,8 +265,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             addShadow(toView: myContainerView)
             
-//            setOpenWindowLevel()
-            
+            //            setOpenWindowLevel()
         case .changed:
             
             /**
@@ -272,7 +273,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
              */
             
             //判断当前手势是否改变，如果是其他状态就return
-            if MyViewPanState.lastState != .began && MyViewPanState.lastState != .changed {
+            if MyViewPanState.lastState != .began && MyViewPanState.lastState != .changed
+            {
                 return
             }
             
@@ -287,7 +289,7 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
             //如果当前的手势状态不是changed的状态就return，因为当你滑动手势后，才可能造成失败
             if MyViewPanState.lastState != .changed {
-//                setClosedWindowLevel()
+                //                setClosedWindowLevel()
                 return
             }
             
@@ -295,20 +297,22 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             let velocity:CGPoint = panGestures.velocity(in: panGestures.view)
             let panInfo:PanInfo = panMyViewResultInfoForVelocity(velocity)
             
-            if panInfo.action == .open {
-                
-                if !MyViewPanState.isHiddenAtStart {
+            if panInfo.action == .open
+            {
+                if !MyViewPanState.isHiddenAtStart
+                {
                     myViewController?.beginAppearanceTransition(true, animated: true)
                 }
                 
                 openLeftWithVelocity(panInfo.velocity)
                 
-            }else{
-                
-                if MyViewPanState.isHiddenAtStart{
+            }
+            else
+            {
+                if MyViewPanState.isHiddenAtStart
+                {
                     myViewController?.beginAppearanceTransition(false, animated: true)
                 }
-                
                 closeLeftWithVelocity(panInfo.velocity)
             }
             
@@ -320,10 +324,13 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
     
     @objc func toggleMyView(){
         
-        if isMyViewOpen() {
+        if isMyViewOpen()
+        {
             closeMyView()
 //            setClosedWindowLevel()
-        }else{
+        }
+        else
+        {
             openMyView()
         }
     }
@@ -365,7 +372,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         //一旦创建出来，操作系统就接手管理，没法参与queue的管理，采用FIFO模式，即先进先出。这边为异步执行，和后台线程同时执行
             DispatchQueue.main.async(execute: {
             //设置主窗口的Z值，UIWindowLevelStatusBar = 1000，这样主窗口就在上
-                if let window = UIApplication.shared.keyWindow{
+                if let window = UIApplication.shared.keyWindow
+                {
             //将当前window的windowlevel设置很大，这样这个window就显示到状态栏前方，不过现在这个功能先不用，不需要不显示状态栏
                     window.windowLevel = UIWindowLevelStatusBar + 1
                 }
@@ -396,9 +404,12 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         let maxOrigin:CGFloat = 0.0
         var newFrame:CGRect = toFrame
         
-        if newOrigin < minOrigin {
+        if newOrigin < minOrigin
+        {
             newOrigin = minOrigin
-        }else if newOrigin > maxOrigin {
+        }
+        else if newOrigin > maxOrigin
+        {
             newOrigin = maxOrigin
         }
         
@@ -448,10 +459,13 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         panInfo.action = leftOrigin <= pointOfNoReturn ? .close : .open
         
         //通过左右的滑动速率使左侧界面打开或关闭
-        if velocity.x >= thresholdVelocity { //向右滑动
+        if velocity.x >= thresholdVelocity
+        { //向右滑动
             panInfo.action = .open
             panInfo.velocity = velocity.x
-        } else if velocity.x <= (-1.0 * thresholdVelocity) { //向左滑动
+        }
+        else if velocity.x <= (-1.0 * thresholdVelocity)
+        { //向左滑动
             panInfo.action = .close
             panInfo.velocity = velocity.x
         }
@@ -470,7 +484,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         var duration: TimeInterval = Double(SlideOutOption.animationDuration)
         
         //如果为0就代表滑动速率不够快，不为0就代表滑动速率较快
-        if velocity != 0.0 {
+        if velocity != 0.0
+        {
             //因为进入这里就代表滑动速度较快，此时动画的剩余持续时间就需要根据此时左侧视图的位置和滑动速度来取，这样左侧视图剩余动画时间可以根据当前的位置来滑动速度来取到合适的值
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
             
@@ -482,7 +497,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
       //UIView最基本的动画方法之一，带有延迟，options配置动画的参数，可传入数组。
         UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in  //这边闭包使用了self，可能会造成强引用循环，需要使用闭包捕获列表，并且这边的闭包是escaping闭包，会在函数返回后在执行
             
-            if let strongSelf = self {
+            if let strongSelf = self
+            {
                 
                 strongSelf.myContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = Float(SlideOutOption.contentViewOpacity)
@@ -492,7 +508,8 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
             
         }){ [weak self](Bool) -> Void in //尾随闭包，对应completion，动画完成后所作的善后工作
             
-            if let strongSelf = self {
+            if let strongSelf = self
+            {
                 //界面打开后,这里禁止主界面的用户交互
                 strongSelf.disableContentInteraction()
                 //触发viewDidAppear，和begin对应
@@ -511,20 +528,23 @@ class SlideOutViewController: UIViewController , UIGestureRecognizerDelegate {
         
         var duration: TimeInterval = Double(SlideOutOption.animationDuration)
         
-        if velocity != 0.0 {
+        if velocity != 0.0
+        {
             duration = Double(fabs(xOrigin - finalXOrigin) / velocity)
             duration = Double(fmax(0.1, fmin(1.0, duration)))
         }
         
         UIView.animate(withDuration: duration, delay: 0.0, options: SlideOutOption.animationOptions, animations: { [weak self]() -> Void in
-            if let strongSelf = self {
+            if let strongSelf = self
+            {
                 strongSelf.myContainerView.frame = frame
                 strongSelf.opacityView.layer.opacity = 0.0
                 strongSelf.mainContainerView.transform = CGAffineTransform(translationX: 0, y: 0)
             }
             
         }) { [weak self](Bool) -> Void in
-            if let strongSelf = self {
+            if let strongSelf = self
+            {
                 strongSelf.removeShadow(strongSelf.myContainerView)
                 strongSelf.enableContentInteraction()
                 //触发viewDidDisAppear，和begin对应
