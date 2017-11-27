@@ -10,7 +10,6 @@ import UIKit
 
 fileprivate struct HomeViewOptions {
     
-    static let defaultPage : Int = 0
     static let defaultColor : UIColor = ConstColor.white
     static let isScrollEnable : Bool = true
     
@@ -18,27 +17,20 @@ fileprivate struct HomeViewOptions {
 
 class HomeView: UIView {
     
-    let controllers:[UIViewController]
-    let topBarHeight:CGFloat
-    let tabHeight:CGFloat
-    let homeScrollView:UIScrollView
+    let controllers:[UIViewController]//存储主界面的视图控制器
+    let topBarHeight:CGFloat//状态栏加导航栏的高度
+    let tabHeight:CGFloat//TabBar高度
+    let homeScrollView:UIScrollView//ScrollView
     var scrollViewRect:CGRect = CGRect(x: 0, y: 0, width: 0, height: 0 )
-    
     weak var delegate:NavTitleViewButtonProtocol?
-    
-    let navTitleLine:UIView
-    
-    //显示在导航栏中间的view
-    var navTitleView :UIView?
+    let navTitleLine:UIView//navgation中间按钮下面的指示线
+    var navTitleView :UIView? //显示在导航栏中间的view
     
     init(viewControllers:[UIViewController] , topHeight:CGFloat , tabBarHeight:CGFloat){
         
         homeScrollView = CustomScrollView(frame: .zero)
         controllers = viewControllers
-        //状态栏加导航栏的高度
         topBarHeight = topHeight
-        
-        //TabBar的高度
         tabHeight = tabBarHeight
         navTitleLine = UIView(frame: .zero)
         
@@ -47,7 +39,6 @@ class HomeView: UIView {
         scrollViewRect = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y + topBarHeight, width: self.bounds.size.width, height: self.bounds.size.height - topBarHeight - tabHeight)
         
         setUp()
-    
     }
     
     required init?(coder aDecoder: NSCoder) {
