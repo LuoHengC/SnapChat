@@ -47,7 +47,11 @@ class HomeView: UIView {
     init(viewControllers:[UIViewController] , topHeight:CGFloat , tabBarHeight:CGFloat){
         
         controllers = viewControllers
+        
+        //状态栏加导航栏的高度
         topBarHeight = topHeight
+        
+        //TabBar的高度
         tabHeight = tabBarHeight
         navTitleLine = UIView(frame: .zero)
         
@@ -82,6 +86,7 @@ extension HomeView{
         
     }
     
+    //设置navgationBar中间的view
     func setNavTitleView() {
         
         navTitleView = UIView(frame: CGRect(x: 0, y: 0, width: ConstButtonSize.navTitleButtonSize.width * CGFloat(controllers.count), height: ConstButtonSize.navTitleButtonSize.height))
@@ -92,6 +97,7 @@ extension HomeView{
         
     }
     
+    //设置导航栏中间view下方的滑动条
     func setNavTitleLine(){
         
         navTitleLine.frame = CGRect(x: 0, y: ConstButtonSize.navTitleButtonSize.height, width: ConstButtonSize.navTitleButtonSize.width, height: 3)
@@ -131,6 +137,7 @@ extension HomeView{
         
     }
     
+    //向导航栏中间的view添加按钮
     func addBtn(to titleView:UIView?) {
         
         for (index , viewController) in controllers.enumerated() {
@@ -145,6 +152,7 @@ extension HomeView{
         
     }
     
+    //创建导航栏中间的按钮
     func createNavTitleBtn(title:String? ,tag:Int) -> UIButton {
         
         let button  = UIButton(type: .custom)
@@ -155,9 +163,9 @@ extension HomeView{
         
         if let strTitle = title{
             
-            let attributedString = NSAttributedString(string: strTitle, attributes: attributes)
+            let attributedString = NSAttributedString(string: strTitle , attributes: attributes)
             
-            button.setAttributedTitle(attributedString, for: .normal)
+            button.setAttributedTitle(attributedString , for: .normal)
             
         }
         
@@ -173,6 +181,7 @@ extension HomeView{
 
 extension HomeView{
     
+    //中间导航栏按钮点击后的操作
     @objc func navTitleBtnOnClick(_ sender:UIButton) {
         
         if let delegate = self.delegate {

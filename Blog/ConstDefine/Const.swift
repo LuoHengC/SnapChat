@@ -22,9 +22,9 @@ struct ConstColor {
 
 //存放自定义button的大小固定值
 struct ConstButtonSize {
-    static let buttonOriginZero = CGPoint(x: 0, y: 0)
-    static let buttonSize = CGSize(width: 35, height: 35)
-    static let navTitleButtonSize = CGSize(width: 45, height: 35)
+    static let buttonOriginZero = CGPoint(x: 0, y: 0) //初始化的button的originSize
+    static let buttonSize = CGSize(width: 35, height: 35) //一般的按钮大小
+    static let navTitleButtonSize = CGSize(width: 45, height: 35) //导航栏按钮的大小
 }
 
 

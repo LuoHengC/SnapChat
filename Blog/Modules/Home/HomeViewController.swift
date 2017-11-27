@@ -66,18 +66,15 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
                 self.navigationItem.titleView = home.navTitleView
                 
             }
-
         }
-        
     }
-    
 }
 
 extension HomeViewController{
     
     func setUp() {
         
-        let tabBarItem = TabBarConfig.setTabBarItem(title:"主页",image: UIImage(named:"tabBar_home.png"),selectImage: UIImage(named: "tabBar_home_highLight.png"))
+        let tabBarItem = TabBarConfig.setTabBarItem(title: "主页",image: UIImage(named:"tabBar_home.png"),selectImage: UIImage(named: "tabBar_home_highLight.png"))
         
         self.tabBarItem = tabBarItem
         
@@ -117,8 +114,14 @@ extension HomeViewController{
     
     func navTitleButtonOnClick(_ sender:UIButton) {
         
-        
-        
+        if let home = homeView{
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                home.homeScrollView.contentOffset = CGPoint(x: CGFloat(sender.tag) * ConstScreenSize.screenWidth , y: 0);
+                
+            })
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -127,9 +130,9 @@ extension HomeViewController{
             
             let navTitleLine = home.navTitleLine
             
-            let xFromCenter: CGFloat = scrollView.contentOffset.x / home.frame.size.width
+            let xRatio: CGFloat = scrollView.contentOffset.x / home.frame.size.width
             
-            navTitleLine.transform = CGAffineTransform(translationX:navTitleLine.frame.size.width * xFromCenter, y:0)
+            navTitleLine.transform = CGAffineTransform(translationX: navTitleLine.frame.size.width * xRatio, y: 0)
             
         }
     }
