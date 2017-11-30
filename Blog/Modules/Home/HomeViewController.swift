@@ -116,12 +116,6 @@ extension HomeViewController{
         }
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-       
-        
-    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if let home = homeView

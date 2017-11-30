@@ -45,6 +45,7 @@
 		E9DE2E5D1F2A2CCA0053D49D /* tabBar_home_highLight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DE2E5A1F2A2CC90053D49D /* tabBar_home_highLight@3x.png */; };
 		E9F9F5C21F98F49000E0DE66 /* ProtocolManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9F5C11F98F49000E0DE66 /* ProtocolManager.swift */; };
 		E9FBE6F61FCC5A6400AE9EAC /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FBE6F51FCC5A6400AE9EAC /* CustomScrollView.swift */; };
+		E9FBE6F81FCDA54F00AE9EAC /* CustomCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FBE6F71FCDA54F00AE9EAC /* CustomCircleButton.swift */; };
 		E9FCB6501F0BD771006402C4 /* BlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB64F1F0BD771006402C4 /* BlogTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,7 @@
 		E9DE2E5A1F2A2CC90053D49D /* tabBar_home_highLight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_home_highLight@3x.png"; sourceTree = "<group>"; };
 		E9F9F5C11F98F49000E0DE66 /* ProtocolManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolManager.swift; sourceTree = "<group>"; };
 		E9FBE6F51FCC5A6400AE9EAC /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		E9FBE6F71FCDA54F00AE9EAC /* CustomCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleButton.swift; sourceTree = "<group>"; };
 		E9FCB6371F0BD770006402C4 /* Blog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64B1F0BD771006402C4 /* BlogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9FCB64F1F0BD771006402C4 /* BlogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogTests.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		E96FC6D11F3211BB0079381C /* Button */ = {
 			isa = PBXGroup;
 			children = (
+				E9FBE6F71FCDA54F00AE9EAC /* CustomCircleButton.swift */,
 				E96FC6D21F3211D60079381C /* MyViewButton.swift */,
 			);
 			path = Button;
@@ -498,6 +501,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FBE6F81FCDA54F00AE9EAC /* CustomCircleButton.swift in Sources */,
 				E96FC6CF1F3210350079381C /* NavigationItemConfig.swift in Sources */,
 				E90A4C361F780275006A1F40 /* HomePageView.swift in Sources */,
 				E960C0031F3CBB0C005790BF /* PopularView.swift in Sources */,

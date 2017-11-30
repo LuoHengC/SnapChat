@@ -27,7 +27,6 @@ struct ConstButtonSize {
     static let navTitleButtonSize = CGSize(width: 45, height: 35) //导航栏按钮的大小
 }
 
-
 //存放屏幕的大小
 struct ConstScreenSize{
     static let screenWidth = UIScreen.main.bounds.width
