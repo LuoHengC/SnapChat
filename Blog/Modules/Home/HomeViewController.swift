@@ -8,19 +8,10 @@
 
 import UIKit
 
-struct ApplicationControlsSize {
-    
-    static fileprivate(set) var navigationHeight:CGFloat?
-    static fileprivate(set) var tabBarHeight:CGFloat?
-    static let statusBarHeight:CGFloat = UIApplication.shared.statusBarFrame.height
-    
-}
-
 class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewButtonProtocol {
     
     let viewControllers:[UIViewController]
     var homeView:HomeView?
-    
     
     init(){
         
@@ -46,21 +37,19 @@ class HomeViewController :UIViewController ,UIScrollViewDelegate ,NavTitleViewBu
         
         super.viewDidLoad()
         
-        ApplicationControlsSize.navigationHeight = self.navigationController?.navigationBar.frame.height
-        ApplicationControlsSize.tabBarHeight = self.tabBarController?.tabBar.frame.height
+        let navigationHeight = self.navigationController?.navigationBar.frame.height
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height
         
-        if let navHeight = ApplicationControlsSize.navigationHeight , let tabHeight = ApplicationControlsSize.tabBarHeight {
-            
-            homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ApplicationControlsSize.statusBarHeight, tabBarHeight: tabHeight)
+        if let navHeight = navigationHeight , let tabHeight = tabBarHeight
+        {
+            homeView = HomeView(viewControllers: viewControllers, topHeight: navHeight + ConstScreenSize.statusBarHeight, tabBarHeight: tabHeight)
             
             if let home = homeView
             {
                 home.homeScrollView.delegate = self
-                
                 home.delegate = self
                 
                 self.view.addSubview(home)
-                
                 self.navigationItem.titleView = home.navTitleView
             }
         }

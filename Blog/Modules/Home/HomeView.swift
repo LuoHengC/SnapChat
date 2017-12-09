@@ -33,7 +33,6 @@ class HomeView: UIView {
         topBarHeight = topHeight
         tabHeight = tabBarHeight
         navTitleLine = UIView(frame: .zero)
-        
         super.init(frame: UIScreen.main.bounds)
         
         scrollViewRect = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y + topBarHeight, width: self.bounds.size.width, height: self.bounds.size.height - topBarHeight - tabHeight)

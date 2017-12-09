@@ -31,11 +31,13 @@ struct ConstButtonSize {
 struct ConstScreenSize{
     static let screenWidth = UIScreen.main.bounds.width
     static let screenHeight = UIScreen.main.bounds.height
+    static let myViewWidth = 300.0
+    static let statusBarHeight = UIApplication.shared.statusBarFrame.height
 }
 
 //存放常量字体大小
 struct ConstFontSize {
-    static let fontSize : CGFloat = 14.0
+    static let fontSize: CGFloat = 14.0
 }
 
 

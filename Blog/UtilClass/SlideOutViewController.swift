@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate struct SlideOutOption {
     
-    static let myViewWidth: CGFloat = 300.0 //设置左侧界面的宽度
+    static let myViewWidth: CGFloat = CGFloat(ConstScreenSize.myViewWidth) //设置左侧界面的宽度
     static let opacityViewBackgroundColor: UIColor = ConstColor.gray //主界面透明度层的颜色
     
     static let panGesturesEnabled: Bool = true //是否支持滑动手势

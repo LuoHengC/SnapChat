@@ -10,12 +10,12 @@ import UIKit
 
 class MyViewController :UIViewController {
 
+    let myView = MyView()
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
-        
+        self.view.addSubview(myView)
     }
 
 }
