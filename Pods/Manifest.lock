@@ -1,0 +1,22 @@
+PODS:
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - SnapKit (from `https://github.com/SnapKit/SnapKit.git`, tag `4.0.0`)
+
+EXTERNAL SOURCES:
+  SnapKit:
+    :git: https://github.com/SnapKit/SnapKit.git
+    :tag: 4.0.0
+
+CHECKOUT OPTIONS:
+  SnapKit:
+    :git: https://github.com/SnapKit/SnapKit.git
+    :tag: 4.0.0
+
+SPEC CHECKSUMS:
+  SnapKit: 4b1c20a79bc7655f2bdefba4f008630681f63fe5
+
+PODFILE CHECKSUM: 73177ff2c38c1c62f0479a13335ef45abd649bd8
+
+COCOAPODS: 1.4.0.beta.2
